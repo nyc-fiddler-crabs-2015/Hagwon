@@ -53,6 +53,11 @@ Available APIS to parse data from :
 
 https://tech.coursera.org/app-platform/catalog/
 
+// GET all courses_id to each category
+https://api.coursera.org/api/catalog.v1/categories?includes=courses
+link to the course is http://coursera.org/courses/{shortname}
+
+
 http://api-explorer.khanacademy.org/
 
 https://www.udemy.com/developers/
