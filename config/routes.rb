@@ -3,11 +3,13 @@ Rails.application.routes.draw do
  root 'welcome#index'
  resources :users
  resources :sessions, only: [:new, :create, :destroy]
- resources :categories, only: [:index, :show]
+ resources :categories, only: [:index, :show] do
+  resources :tracks, only: [:new, :create]
+ end
  resources :courses do
   resources :reviews
 end
 
- resources :tracks
+ resources :tracks, except: [:new, :create]
 
 end
