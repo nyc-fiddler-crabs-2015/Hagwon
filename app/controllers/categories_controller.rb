@@ -5,6 +5,9 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @category = Category.find(params[:id])
+    @courses = @category.courses
+    @tracks = @category.tracks.includes(:user)
   end
 
 end
