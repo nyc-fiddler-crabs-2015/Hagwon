@@ -3,6 +3,7 @@ class CreateCourses < ActiveRecord::Migration
     create_table :courses do |t|
       t.string :url, null: false
       t.string :name, null: false
+      t.references :category
 
       t.timestamps null: false
     end
