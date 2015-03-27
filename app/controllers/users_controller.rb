@@ -24,12 +24,20 @@ class UsersController < ApplicationController
 
 	def edit
 		@user = User.find(params[:id])
+		if @user.id != session[:user_id]
+      redirect_to @user
+		end
 	end
 
 	def update
-		@user = User.find(session[:user_id])
+    @user = User.find(session[:user_id])
 		@user.update_attributes(user_params)
-		render :edit
+		redirect_to @user
+	end
+
+	def destroy
+		User.delete(session[:user_id])
+		redirect_to root
 	end
 
 	private

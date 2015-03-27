@@ -1,0 +1,11 @@
+
+<h1>Update Profile</h1>
+<%= form_for(@user) do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username, :input_html => {value: params[:username] } %>
+  <%= f.label :email %>
+  <%= f.text_field :email, :input_html => {value: params[:email] } %>
+  <%= f.submit "Update" %>
+<% end %>
+
+<%= button_to "Delete", user_path(@user), confirm: "Are You Sure?", method:"delete"%>
