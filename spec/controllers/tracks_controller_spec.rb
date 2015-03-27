@@ -10,4 +10,9 @@ describe TracksController do
     expect(response).to be_ok
   end
 
+  it 'has a show page' do
+    tracks_path(track.id)
+    expect(response).to be_ok
+  end
+
 end
