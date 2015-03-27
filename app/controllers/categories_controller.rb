@@ -4,7 +4,6 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    render text: 'I am hey'
   end
 
 end
