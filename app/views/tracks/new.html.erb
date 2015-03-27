@@ -1,0 +1,9 @@
+
+<%= form_tag "/categories/#{@category.id}/tracks" do %>
+  <%= text_field_tag(:title)%>
+  <% @courses.each do |course| %>
+    <%= check_box_tag("course[#{course.id}]", course.id)%>
+    <%= label_tag("course[#{course.id}]", course.name)%>
+  <%end%>
+  <%= submit_tag %>
+<%end%>
