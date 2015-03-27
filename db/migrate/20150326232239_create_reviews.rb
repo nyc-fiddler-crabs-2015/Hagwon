@@ -5,6 +5,7 @@ class CreateReviews < ActiveRecord::Migration
       t.integer :difficulty, null: false
       t.text :comment, null: false
       t.references :course, null: false
+      t.references :user, null: false
 
       t.timestamps null: false
     end

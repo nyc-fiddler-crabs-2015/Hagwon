@@ -1,7 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+#  create a relation > CourseTrack.create(course_id: 1, track_id: 1, order:2)
+
+# Track.last.courses && Course.last.tracks
+
+# get the order > CourseTrack.where(course_id: 1, track_id: 2).order
