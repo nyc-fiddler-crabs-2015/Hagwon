@@ -15,9 +15,9 @@ var Tracks = angular.module('tracksApp', [])
 Tracks.controller('tracksCtrl', ['$scope', '$http', function($scope, $http){
   $scope.tracks = [];
   $http.get('/tracks.json').then(function(response){
-    console.log(response)
     response.data.map(function(track){
-       var user = track.user;
+      console.log(track)
+       var user = track.owner;
        var category = track.category;
        if(user){
         user = new User(user)
@@ -27,6 +27,7 @@ Tracks.controller('tracksCtrl', ['$scope', '$http', function($scope, $http){
        }
     })
   })
+
   $scope.updateTrack = function(){
     var track = $scope.tracks.pop()
     $http.post('/tracks/'+track.id)
