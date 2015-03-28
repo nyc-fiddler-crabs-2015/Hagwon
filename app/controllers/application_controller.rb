@@ -10,8 +10,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def current_user_path
-    user_path(current_user.id)
-  end
-
 end
