@@ -1,6 +1,8 @@
 class CoursesController < ApplicationController
   def index
-    @courses = Course.all
-    render json: @courses
+    track = Track.find(params[:track_id])
+    render json: track.courses
   end
+
+
 end

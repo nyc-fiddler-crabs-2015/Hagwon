@@ -1,0 +1,12 @@
+<%= form_tag "#{course_reviews_path(1)}", method: "post" do  %>
+
+  <%= label_tag "Add Review" %> </br>
+  <%= label_tag "Difficulty: " %>
+  <%= select_tag "difficulty", options_for_select([*1..5], "") %>
+  <%= label_tag "Rating: " %>
+  <%= select_tag "rating", options_for_select([*1..5], "") %>
+  <%= hidden_field_tag  :user_id, value: current_user.id %>
+  
+
+  <%= submit_tag nil, :class => 'btn btn-success' %>
+<% end %>
