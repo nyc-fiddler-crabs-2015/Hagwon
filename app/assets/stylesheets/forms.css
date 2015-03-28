@@ -15,8 +15,8 @@
   position: relative;
   height: auto;
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   padding: 10px;
   font-size: 16px;
 }
@@ -36,20 +36,27 @@
 
 .form-signin input {
   width: 100%;
- }
- .form-signin h1,  .form-signin h2,  .form-signin h3, .form-signin h4,  .form-signin h5,  .form-signin h6, .form-signin p {
-  text-align: center;
- }
+}
 
- .no-bottom-radius {
+.form-signin input[type="submit"] {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.form-signin h1,  .form-signin h2,  .form-signin h3, .form-signin h4,  .form-signin h5,  .form-signin h6, .form-signin p {
+  text-align: center;
+}
+
+.no-bottom-radius {
   margin-bottom: -1px;
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
- }
+}
 
-  .no-top-radius {
+.no-top-radius {
   margin-top: -1px;
   border-top-right-radius: 0 !important;
   border-top-left-radius: 0 !important;
- }
+}
+
 
