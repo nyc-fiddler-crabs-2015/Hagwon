@@ -1,8 +1,9 @@
 class ReviewsController < ActionController::Base
-  
+
   def index
     @course = Course.find(params[:course_id])
     @reviews = @course.reviews
+
   end
 
   def show
