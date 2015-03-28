@@ -59,4 +59,7 @@
   border-top-left-radius: 0 !important;
 }
 
+.form-signin .error {
+  color: orangered;
+}
 
