@@ -4,6 +4,10 @@
 
 # get the order > CourseTrack.where(course_id: 1, track_id: 2).order
 
+# User.first.tracks.create(user_id: 1, category_id: 1, name: 'yeee') will assign this track to an owner(User.first), and a user (means that the owner will be able to access it> adding a user_id will store the result in the join table, therefore making it accessible)
+
+
+
 require 'open-uri'
 
 require 'json'

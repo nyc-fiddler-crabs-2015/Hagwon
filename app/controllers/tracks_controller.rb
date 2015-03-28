@@ -24,5 +24,17 @@ class TracksController < ApplicationController
     redirect_to track
   end
 
+  #forking >
+  # new_track = Track.includes(:courses).find("track_id").dup
+  # UserTrack.create(user_id: session[:user_id], track_id: new_track), after that User.find(session[:user_id]).tracks will include the newly forked track
+  # User.find(session[:user_id]).tracks.find(11).courses.delete(20), deletes a course from a duplicated track without affecting neither the course nor the original track themselves.
+
+  def fork
+    track = Track.includes(:courses).find(params[:track_id]).dup
+    user = session[:user_id]
+    UserTrack.create(user_id: user, track: track)
+    redirect_to track_path
+  end
+
 
 end
