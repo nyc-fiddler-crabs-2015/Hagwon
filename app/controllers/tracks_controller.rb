@@ -5,6 +5,8 @@ class TracksController < ApplicationController
 
   def show
     @track = Track.find(params[:id])
+    puts @track.courses
+    @courses = @track.courses
   end
 
   def new
@@ -19,7 +21,7 @@ class TracksController < ApplicationController
       course = Course.find(key.to_i)
       CourseTrack.create(order: 1, track: track, course: course)
     end
-    render text: 'saved'
+    redirect_to track
   end
 
 
