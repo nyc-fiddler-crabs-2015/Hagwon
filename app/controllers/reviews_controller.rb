@@ -39,7 +39,7 @@ class ReviewsController < ActionController::Base
   private
 
   def review_params
-    params.require(:review).permit(:user_id, :difficulty, :rating)
+    params.permit(:user_id, :difficulty, :rating)
   end
   
 end
