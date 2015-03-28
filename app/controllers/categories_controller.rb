@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @courses = @category.courses
-    @tracks = @category.tracks.includes(:user)
+    @tracks = @category.tracks.includes(:owner)
   end
 
 end

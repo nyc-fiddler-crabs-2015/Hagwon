@@ -8,11 +8,15 @@ Rails.application.routes.draw do
  resources :categories, only: [:index, :show] do
   resources :tracks, only: [:new, :create]
  end
+
  resources :courses do
   resources :reviews
 end
 
- resources :tracks, except: [:new, :create]
+ resources :tracks, except: [:new, :create] do
+   resources :courses, only: [:index, :destroy]
+   get '/tracks/:id/done', :to => 'courses#done'
+ end
 
 
 end
