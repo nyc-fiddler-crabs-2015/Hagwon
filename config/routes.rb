@@ -12,4 +12,6 @@ end
 
  resources :tracks, except: [:new, :create]
 
+ post '/tracks/:track_id/fork' :to => 'tracks#fork'
+
 end
