@@ -27,7 +27,8 @@ class TracksController < ApplicationController
   def fork
     track = Track.find(params[:track_id])
     user = session[:user_id]
-
+    UserTrack.create(user_id: user, track: track)
+    redirect_to track_path
   end
 
 
