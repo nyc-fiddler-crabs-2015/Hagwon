@@ -24,5 +24,11 @@ class TracksController < ApplicationController
     redirect_to track
   end
 
+  def fork
+    track = Track.find(params[:track_id])
+    user = session[:user_id]
+
+  end
+
 
 end
