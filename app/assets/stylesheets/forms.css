@@ -4,6 +4,7 @@
   margin: 0 auto;
   border-radius: 5px;
   border: #bdc3c7 solid 1px;
+  padding-top: 20px;
 }
 .form-signin .form-signin-heading,
 
@@ -44,5 +45,11 @@
   margin-bottom: -1px;
   border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
+ }
+
+  .no-top-radius {
+  margin-top: -1px;
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
  }
 
