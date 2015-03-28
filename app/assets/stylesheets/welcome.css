@@ -1,6 +1,8 @@
 .jumbo-green {
   background: #2c3e50 !important;
   color: #ecf0f1 !important;
+    text-shadow: 2px 2px black;
+
 }
 
 .navbar-default {
@@ -10,5 +12,8 @@
 
 .navbar a {
   color: #ecf0f1 !important;
+}
 
+.navbar a:hover {
+  text-shadow: 1px 1px black;
 }
