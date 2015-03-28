@@ -3,8 +3,8 @@ require 'rails_helper'
 describe TracksController do
   let!(:user){User.create(email: 'rayanbouts@gmail.com', username: 'rayanbouts', password: 'ilovejs')}
   let!(:category){Category.create(name: 'Programming')}
-  let!(:track){Track.create(name: 'Learn python in no time', user: user, category: category)}
-  let!(:course){Course.create(name: 'Vim', url: 'http://vim.com')}
+  let!(:track){Track.create(name: 'Learn python in no time', owner: user, category: category)}
+  let!(:course){Course.create(name: 'Vim', url: 'http://vim.com', category: category)}
 
   it 'has an index page' do
     get :index
