@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
  root 'welcome#index'
+ post '/tracks/:track_id/fork', :to => 'tracks#fork'
  resources :users
  resources :sessions, only: [:new, :create, :destroy]
  resources :categories, only: [:index, :show] do
@@ -12,6 +13,5 @@ end
 
  resources :tracks, except: [:new, :create]
 
- post '/tracks/:track_id/fork', :to => 'tracks#fork'
 
 end
