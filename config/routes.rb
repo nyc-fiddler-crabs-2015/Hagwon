@@ -14,7 +14,8 @@ Rails.application.routes.draw do
 end
 
  resources :tracks, except: [:new, :create] do
-   resources :courses, only: [:index]
+   resources :courses, only: [:index, :destroy]
+   get '/tracks/:id/done', :to => 'courses#done'
  end
 
 
