@@ -1,11 +1,11 @@
-
-<h1>Update Profile</h1>
-<%= form_for(@user) do |f| %>
+<%= form_for @user, :html => {:class => "form-signin"} do |f| %>
+  <h2>Update Profile</h2>
   <%= f.label :username %>
-  <%= f.text_field :username, :input_html => {value: params[:username] } %>
+  <%= f.text_field :username, :input_html => {value: params[:username] }, :class => "form-control" %>
   <%= f.label :email %>
-  <%= f.text_field :email, :input_html => {value: params[:email] } %>
-  <%= f.submit "Update" %>
+  <%= f.text_field :email, :input_html => {value: params[:email] }, :class => "form-control" %>
+  <p></p>
+  <%= f.submit nil, :class => "btn btn-primary" %>
+  <p></p>
+  <%= button_to "Cancel Account", user_path(@user), confirm: "Are You Sure?", method:"delete", :class => "btn btn-danger"%>
 <% end %>
-
-<%= button_to "Delete", user_path(@user), confirm: "Are You Sure?", method:"delete"%>
