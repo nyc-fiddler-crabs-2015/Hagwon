@@ -1,0 +1,10 @@
+<div ng-app="tracksApp">
+  <div ng-controller="tracksCtrl">
+    <h1> All Tracks </h1>
+    <input ng-model="search" placeholder="Search by name, category, user" style="width:20%">
+    <ul>
+      <li ng-repeat="track in tracks | filter:search">
+        <a href="/tracks/{{track.id}}"> {{track.name}}</a>
+      </li>
+  </div>
+</div>

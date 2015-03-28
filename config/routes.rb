@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
  root 'welcome#index'
  post '/tracks/:track_id/fork', :to => 'tracks#fork'
+ get '/tracks.json', :to => 'tracks#json'
  resources :users
  resources :sessions, only: [:new, :create, :destroy]
  resources :categories, only: [:index, :show] do

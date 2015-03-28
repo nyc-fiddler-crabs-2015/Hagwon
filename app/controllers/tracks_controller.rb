@@ -5,8 +5,11 @@ class TracksController < ApplicationController
 
   def show
     @track = Track.find(params[:id])
-    puts @track.courses
     @courses = @track.courses
+  end
+
+  def json
+    render json: Track.all.to_json(:include => { :owner => { :only => :username }, category: {only: :name}  })
   end
 
   def new
