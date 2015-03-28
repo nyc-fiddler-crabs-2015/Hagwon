@@ -1,6 +1,10 @@
-<h1><%= @track.name%></h1>
-<ul>
-  <% @courses.each do |course|%>
-    <li><%= link_to course.name, course.url%></li>
-  <%end%>
-</ul>
+<div ng-app="trackApp">
+  <h1><%= @track.name%></h1>
+  <div ng-controller="coursesCtrl">
+    <ul>
+        <div ng-repeat="course in courses" class="course-box">
+          <button ng-click="delete(course)"> X </button>
+          <a href="{{course.url}}">{{course.name}}</a>
+        </div>
+    </ul>
+  </div>
