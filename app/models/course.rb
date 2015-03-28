@@ -6,4 +6,7 @@ class Course < ActiveRecord::Base
   def rating
   end
 
+  def difficulty
+  end
+
 end
