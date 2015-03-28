@@ -1,13 +1,12 @@
-<h2>Sign in</h2>
+<%= form_tag sessions_path, :class => "form-signin" do %>
+	<h2>Sign in</h2>
+	<%= label_tag :email, nil, :class => "sr-only" %>
 
-<%= form_tag sessions_path do %>
+	<%= text_field_tag :email, nil, :class => "form-control no-bottom-radius", :placeholder => "Email" %>
+	<%= label_tag :password, nil, :class => "sr-only" %>
 
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-    <%= submit_tag "Sign In" %>
+	<%= password_field_tag :password, nil, :class => "form-control", :placeholder => "Password" %>
 
+	<%= submit_tag "Log In",  :class => "btn btn-primary center-block" %>
+	<p>New user? <%= link_to "Sign up now!", new_user_path %></p>
 <% end %>
-
-<p>New user? <%= link_to "Sign up now!", new_user_path %></p>
