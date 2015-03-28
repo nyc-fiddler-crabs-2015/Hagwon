@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 	end
 
 	def new
+		redirect_to root_path if current_user
 		@user = User.new
 	end
 
@@ -25,12 +26,12 @@ class UsersController < ApplicationController
 	def edit
 		@user = User.find(params[:id])
 		if @user.id != session[:user_id]
-      redirect_to @user
+			redirect_to @user
 		end
 	end
 
 	def update
-    @user = User.find(session[:user_id])
+		@user = User.find(session[:user_id])
 		@user.update_attributes(user_params)
 		redirect_to @user
 	end
