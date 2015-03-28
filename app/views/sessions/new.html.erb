@@ -1,4 +1,6 @@
+
 <%= form_tag sessions_path, :class => "form-signin" do %>
+  <p class="error"><%= flash.now[:error] %></p>
 	<h2>Sign in</h2>
 	<%= label_tag :email, nil, :class => "sr-only" %>
 
