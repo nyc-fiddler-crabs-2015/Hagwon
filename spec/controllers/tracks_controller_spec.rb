@@ -6,6 +6,10 @@ describe TracksController do
   let!(:track){Track.create(name: 'Learn python in no time', owner: user, category: category)}
   let!(:course){Course.create(name: 'Vim', url: 'http://vim.com', category: category)}
 
+  before do
+    session[:user_id] = user.id
+  end
+
   it 'has an index page' do
     get :index
     expect(response).to be_ok
@@ -23,7 +27,6 @@ describe TracksController do
 
   it 'creates a track with courses' do
     post :create, {:category_id => category.id, title:'Super track', 'course'=>{course.id=>course.id} }
-    expect(response).to be_ok
     expect(CourseTrack.last.course_id).to eq(course.id)
   end
 
