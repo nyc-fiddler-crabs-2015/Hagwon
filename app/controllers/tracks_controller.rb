@@ -28,6 +28,15 @@ class TracksController < ApplicationController
   end
 
   def edit
+    @track = Track.includes(:courses, :category => :courses).find(params[:id])
+    @checked_courses = @track.courses
+    @all_courses = @track.category.courses - @checked_courses
+    if session[:user_id] != @track.user_id
+      redirect_to @track
+    end
+  end
+
+  def update
   end
 
   #forking >
