@@ -1,0 +1,40 @@
+.new_track_drag input[type='checkbox'], .new_track_drag label { display: none; }
+
+.row li, .sidebar li { 
+  list-style-type: none; margin: 0; padding: 0;   min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px; 
+}
+
+
+.row {
+  padding-top: 20px;
+  float: left;
+  background: none;
+  width: 75%;
+}
+
+.sidebar {
+  width: 200px;
+  left: 3em;
+  position: relative;
+  border: grey solid 1px;
+  border-radius: 5px;
+  float: left;
+  background: none;
+  padding-top: 20px;
+    margin-bottom: -101%;
+  padding-bottom: 101%;
+    margin-top: 1em;
+
+}
+.container {overflow: hidden;}
+
+#row_course_selection {
+  border: #ddd solid 1px;
+  border-radius: 5px;
+  margin-top: 1em;
+  min-height: 20em;
+}
+
+.course_box { height: 10em;}
