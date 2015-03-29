@@ -1,6 +1,7 @@
 <div ng-app="tracksApp">
   <div ng-controller="tracksCtrl">
     <h1> All Tracks </h1>
+    <%= link_to "New Track", new_category_track_path(1), :class => "btn btn-default" %>
     <input ng-model="search" placeholder="Search by name, category, user" style="width:20%">
     <ul>
       <li ng-repeat="track in tracks | filter:search">
