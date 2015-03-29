@@ -4,6 +4,7 @@ class TracksController < ApplicationController
   end
 
   def show
+    @count = Track.find(params[:id]).users.count
     @track = Track.includes(:owner).find(params[:id])
   end
 
