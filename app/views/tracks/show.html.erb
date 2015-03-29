@@ -1,6 +1,6 @@
 <div ng-app="trackApp">
   <h1><%= @track.name%></h1>
-  <i> by <%=@user.username%>, taken by <%= @count%> users </i>
+  <i> by <%=@track.owner.username%>, taken by <%=@count%> users </i>
   <%= link_to 'Fork', "/tracks/#{@track.id}/fork", method: 'post'%>
   <div ng-controller="coursesCtrl">
     <input type="text" ng-model="search" placeholder="Search course">

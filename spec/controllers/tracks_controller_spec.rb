@@ -22,8 +22,8 @@ describe TracksController do
   end
 
   it 'creates a track with courses' do
+    session[:user_id] = user.id
     post :create, {:category_id => category.id, title:'Super track', 'course'=>{course.id=>course.id} }
-    expect(response).to be_ok
     expect(CourseTrack.last.course_id).to eq(course.id)
   end
 
