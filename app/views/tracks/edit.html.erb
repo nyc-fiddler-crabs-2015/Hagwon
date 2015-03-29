@@ -1,0 +1,13 @@
+<%= form_tag category_tracks_path do %>
+  <%= text_field_tag(:title)%>
+    <% @checked_courses.each do |course| %>
+      <%= check_box_tag("course[#{course.id}]", course.id, checked)%>
+      <%= label_tag("course[#{course.id}]", course.name, checked)%>
+    <%end%>
+     <% @all_courses.each do |course| %>
+      <%= check_box_tag("course[#{course.id}]", course.id)%>
+      <%= label_tag("course[#{course.id}]", course.name)%>
+    <%end%>
+    <%= hidden_field_tag(:position)%>
+  <%= submit_tag %>
+<%end%>
