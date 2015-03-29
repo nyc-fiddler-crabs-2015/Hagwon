@@ -19,6 +19,10 @@ gem 'coffee-rails', '~> 4.1.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'angularjs-rails'
+gem 'jquery-ui-rails'
+gem "font-awesome-rails"
+
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'bcrypt'
 gem 'jbuilder', '~> 2.0'
@@ -27,6 +31,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Makes record duplication nice and easy
 gem 'amoeba'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
