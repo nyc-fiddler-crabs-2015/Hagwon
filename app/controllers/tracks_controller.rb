@@ -5,11 +5,12 @@ class TracksController < ApplicationController
 
   def show
     @track = Track.find(params[:id])
-    @courses = @track.courses
+    @count = @track.users.count
+    @user = @track.owner
   end
 
   def json
-    render json: Track.all.to_json(:include => { :owner => { :only => :username }, category: {only: :name}  })
+    render json: Track.all.to_json(:include => { :owner => { :only => :username }, category: {only: :name} })
   end
 
   def new
@@ -33,10 +34,11 @@ class TracksController < ApplicationController
   # User.find(session[:user_id]).tracks.find(11).courses.delete(20), deletes a course from a duplicated track without affecting neither the course nor the original track themselves.
 
   def fork
-    track = Track.includes(:courses).find(params[:track_id]).dup
-    user = session[:user_id]
-    UserTrack.create(user_id: user, track: track)
-    redirect_to track_path
+    track = Track.find(params[:track_id]).dup
+    track.courses = Track.find(params[:track_id]).courses.dup
+    user_id = session[:user_id]
+    UserTrack.create(user_id: user_id, track: track)
+    redirect_to tracks_path
   end
 
 
