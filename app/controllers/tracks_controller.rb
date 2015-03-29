@@ -1,11 +1,9 @@
 class TracksController < ApplicationController
   def index
-    @tracks = Track.all
   end
 
   def show
     @track = Track.find(params[:id])
-    @count = @track.users.count
     @user = @track.owner
   end
 
@@ -19,7 +17,7 @@ class TracksController < ApplicationController
   end
 
   def create
-    track = Track.create(user_id: 2, category_id: params[:category_id], name: params[:title])
+    track = Track.create(user_id: session[:user_id], category_id: params[:category_id], name: params[:title])
     x = 0
     params[:course].each do |value, key|
       course = Course.find(key.to_i)
