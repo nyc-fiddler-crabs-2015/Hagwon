@@ -1,4 +1,4 @@
-<%= form_tag "#{course_reviews_path(1)}", method: "post" do  %>
+<%= form_tag "#{course_reviews_path(@course)}", method: "post" do  %>
 
   <%= label_tag "Add Review" %> </br>
   <%= label_tag "Difficulty: " %>
