@@ -20,12 +20,8 @@
     <li data-id="<%= course.id %>" class="col-xs-6 col-md-3">
         <div class="thumbnail course_box">
           <div><%= course.name %></div>
-          <div>
-          rating <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i>
-          </div>
-          <div>
-          difficulty <i class="fa fa-rocket rocket"></i> <i class="fa fa-rocket rocket"></i> <i class="fa fa-rocket rocket"></i>
-          </div>
+          <div><span>rating</span> <%= star(course.rating) %></div>
+          <div><span>difficulty</span> <%= rocket(course.difficulty) %></div>
         </div>
       </li>
 
@@ -38,12 +34,8 @@
        <li data-id="<%= course.id %>" class="col-xs-12 col-md-12">
         <div class="thumbnail course_box">
           <div><%= course.name %></div>
-          <div>
-          rating <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i>
-          </div>
-          <div>
-          difficulty <i class="fa fa-rocket rocket"></i> <i class="fa fa-rocket rocket"></i> <i class="fa fa-rocket rocket"></i>
-          </div>
+          <div><span>rating</span> <%= star(course.rating) %></div>
+          <div><span>difficulty</span> <%= rocket(course.difficulty) %></div>
         </div>
       </li>
    <% end %>
