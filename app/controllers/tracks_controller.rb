@@ -37,6 +37,12 @@ class TracksController < ApplicationController
   end
 
   def update
+    track = Track.find(params[:id])
+    track.update(name: params[:title]) if params[:title].length > 2
+    courses = params[:course].map{|value, key| value.to_i }
+    track.courses = Course.find(courses)
+    track.save
+    redirect_to track
   end
 
   #forking >
