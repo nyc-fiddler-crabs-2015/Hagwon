@@ -18,11 +18,10 @@ class TracksController < ApplicationController
   end
 
   def create
-    track = Track.create(user_id: session[:user_id], category_id: params[:category_id], name: params[:title])
-    x = 0
+    track = Track.create(user_id: session[:user_id], category_id: params[:category_id], name: params[:title], order: params[:position])
     params[:course].each do |value, key|
       course = Course.find(key.to_i)
-      CourseTrack.create(order: 1, track: track, course: course)
+      CourseTrack.create(track: track, course: course)
     end
     redirect_to track
   end
