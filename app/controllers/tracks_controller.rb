@@ -28,6 +28,21 @@ class TracksController < ApplicationController
   end
 
   def edit
+    @track = Track.includes(:courses, :category => :courses).find(params[:id])
+    @checked_courses = @track.courses
+    @all_courses = @track.category.courses - @checked_courses
+    if session[:user_id] != @track.user_id
+      redirect_to @track
+    end
+  end
+
+  def update
+    track = Track.find(params[:id])
+    track.update(name: params[:title]) if params[:title].length > 2
+    courses = params[:course].map{|value, key| value.to_i }
+    track.courses = Course.find(courses)
+    track.save
+    redirect_to track
   end
 
   #forking >
