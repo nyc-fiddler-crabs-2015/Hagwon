@@ -1,5 +1,11 @@
     $(function() {
+      var arraySelected = [];
 
+      $('#row_course_selection').children('li').each(function () {
+            arraySelected.push($(this).data("id"));
+        });
+
+      $('#position').val(arraySelected)
       $( "#sidebar_course_choices" ).sortable({
         connectWith: "#row_course_selection",
         update: function(){
@@ -12,9 +18,9 @@
         }
       });
       $( "#row_course_selection" ).sortable({
-        connectWith: "#sidebar_course_choices", 
+        connectWith: "#sidebar_course_choices",
         update: function(event){
-          var arraySelected = [];
+          arraySelected = [];
           $(event.target).children('li').each(function () {
             arraySelected.push($(this).data("id"));
             var courseBox = '#course_' + $(this).data("id");
@@ -22,10 +28,13 @@
           // courseBox.attr("checked", !courseBox.attr("checked"));
           $(courseBox).prop('checked', true);
         });
-          console.log(arraySelected);
+
           $("#row_course_selection").children('li').each(function () {
             $(this).attr("class", "col-xs-6 col-md-3");
           });
+          //* submit array to hidden input in form
+          $('#position').val(arraySelected)
+          console.log(arraySelected)
 
         }
       });
