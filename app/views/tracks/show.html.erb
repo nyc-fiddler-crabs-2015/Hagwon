@@ -7,7 +7,7 @@
     <ul>
         <div ng-repeat="course in courses | filter:search" class="course-box">
           <div class="course-box" style="background-color: {{course.color}};margin-bottom:10px;">
-            <a href="{{course.url}}">{{course.name}}</a>
+            <a href="{{course.url}}" target="_blank">{{course.name}}</a>
             <span><%= link_to '/', '/courses/{{course.id}}/check'%></span>
           </div>
         </div>
