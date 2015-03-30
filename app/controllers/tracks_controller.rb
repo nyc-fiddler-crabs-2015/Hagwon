@@ -47,7 +47,7 @@ class TracksController < ApplicationController
   end
 
   def fork
-    forked = Track.find(params[:track_id])
+    forked = Track.includes(:courses).find(params[:track_id])
     track         = forked.dup
     track.courses = forked.courses.dup
     track.save
