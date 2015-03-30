@@ -7,7 +7,8 @@ class Course < ActiveRecord::Base
   belongs_to :category
 
   def rating
-    ratings = Review.where(course_id: self.id).map { |rev| rev.rating  }
+    # Beware n+1 query here!
+    ratings = Review.includes(:course).where(course_id: self.id).map { |rev| rev.rating  }
     average = ratings.reduce(:+).to_f / ratings.size
   end
 

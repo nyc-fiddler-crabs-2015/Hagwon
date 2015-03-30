@@ -19,6 +19,7 @@ class ReviewsController < ActionController::Base
     
     course = Course.find(params[:course_id])
     review = course.reviews.new(review_params)
+    # Good
     if review.save
       redirect_to :back
     else

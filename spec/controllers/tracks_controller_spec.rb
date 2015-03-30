@@ -27,4 +27,13 @@ describe TracksController do
     expect(CourseTrack.last.course_id).to eq(course.id)
   end
 
+  context "testing JSON serialization" do
+    it "shit" do
+      get :json
+      require 'pp'
+      require 'json'
+      pp JSON.parse(response.body)
+    end
+  end
+
 end

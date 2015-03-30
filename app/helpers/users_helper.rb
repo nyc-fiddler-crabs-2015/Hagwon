@@ -1,3 +1,4 @@
+# you already have current_user in ApplicationController
 module UsersHelper
 	def current_user
 		if session[:user_id]

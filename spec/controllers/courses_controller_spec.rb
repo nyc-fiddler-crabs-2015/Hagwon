@@ -1,3 +1,4 @@
+# If you don't have anything to test delete it.
 require 'rails_helper'
 
 # describe CoursesController do

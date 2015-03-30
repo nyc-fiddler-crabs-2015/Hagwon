@@ -7,6 +7,12 @@ Courses
   <%end%>
 </ul>
 
+<!-- I'm concerned aboutyour HTML here, this Traks thing should be in a <p> tag
+  or something.  HTML has some rules about where text appears within
+  block-element tags and you need to make sure you're writing decently legible
+  HTML
+-->
+
 Tracks
 <%= link_to "New Track", new_category_track_path(@category.id), :class => "btn btn-default" %>
 <ul>
