@@ -13,7 +13,7 @@ class Course < ActiveRecord::Base
 
   def difficulty
     difficulties = Review.where(course_id: self.id).map { |rev| rev.difficulty  }
-    average = difficulties.reduce(:+).to_f / ratings.size
+    average = difficulties.reduce(:+).to_f / difficulties.size
   end
 
 end
