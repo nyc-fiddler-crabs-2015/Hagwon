@@ -16,7 +16,6 @@ Tracks.controller('tracksCtrl', ['$scope', '$http', function($scope, $http){
   $scope.tracks = [];
   $http.get('/tracks.json').then(function(response){
     response.data.map(function(track){
-      console.log(track)
        var user = track.owner;
        var category = track.category;
        if(user){
