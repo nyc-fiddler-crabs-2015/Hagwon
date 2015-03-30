@@ -1,6 +1,6 @@
-<h1> All Categories </h1>
+<h1> Select a Category for your Track </h1>
 
 <% @categories.each do |category| %>
-  <li><%= link_to category.name,  category_path(category.id)%></li>
+  <li><%= link_to category.name,  new_category_track_path(category.id)%></li>
 <%end%>
 
