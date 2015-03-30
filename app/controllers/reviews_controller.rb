@@ -28,6 +28,7 @@ class ReviewsController < ActionController::Base
   end
 
   def new
+    @course = params[:course_id]
     @review = Review.new
   end
 
