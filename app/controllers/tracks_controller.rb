@@ -3,7 +3,8 @@ class TracksController < ApplicationController
   end
 
   def show
-    @count = Track.find(params[:id]).users.count
+    owner  = Track.find(params[:id]).owner.id
+    @count = Track.where(owner: owner).count
     @track = Track.includes(:owner).find(params[:id])
   end
 
@@ -23,6 +24,7 @@ class TracksController < ApplicationController
       course = Course.find(key.to_i)
       CourseTrack.create(track: track, course: course)
     end
+    UserTrack.create(track: track, user_id: session[:user_id])
     redirect_to track
   end
 
@@ -43,11 +45,6 @@ class TracksController < ApplicationController
     track.save
     redirect_to track
   end
-
-  #forking >
-  # new_track = Track.includes(:courses).find("track_id").dup
-  # UserTrack.create(user_id: session[:user_id], track_id: new_track), after that User.find(session[:user_id]).tracks will include the newly forked track
-  # User.find(session[:user_id]).tracks.find(11).courses.delete(20), deletes a course from a duplicated track without affecting neither the course nor the original track themselves.
 
   def fork
     forked = Track.find(params[:track_id])
