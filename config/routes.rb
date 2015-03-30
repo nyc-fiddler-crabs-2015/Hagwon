@@ -11,11 +11,11 @@ Rails.application.routes.draw do
 
  resources :courses do
   resources :reviews
+  get '/check', :to => 'courses#check'
 end
 
  resources :tracks, except: [:new, :create] do
    resources :courses, only: [:index, :destroy]
-   get '/done', :to => 'courses#done'
  end
 
 
