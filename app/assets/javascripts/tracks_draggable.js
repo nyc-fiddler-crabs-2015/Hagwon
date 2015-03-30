@@ -14,7 +14,7 @@
           $(this).attr("class", "col-xs-6 col-md-3");
         });
 
-        console.log(arraySelected);
+        $('#position').val(arraySelected)
       }
     });
       $( "#sidebar_course_choices", "#row_course_selection" ).disableSelection();
