@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
  root 'welcome#index'
- post '/tracks/:track_id/fork', :to => 'tracks#fork'
  get '/tracks.json', :to => 'tracks#json'
  resources :users
  resources :sessions, only: [:new, :create, :destroy]
@@ -16,6 +15,7 @@ end
 
  resources :tracks, except: [:new, :create] do
    resources :courses, only: [:index, :destroy]
+   post '/follow', :to => 'tracks#follow'
  end
 
 
