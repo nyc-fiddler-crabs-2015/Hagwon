@@ -18,6 +18,10 @@ class CoursesController < ApplicationController
   end
 
   def uncheck
+    course = UserCourse.find_by(user_id: session[:user_id], course_id: params[:course_id])
+    course.destroy if course
+    course.save
+    redirect_to :back
   end
 
   def destroy

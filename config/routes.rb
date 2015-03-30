@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
  resources :courses do
   resources :reviews
-  get '/check', :to => 'courses#check'
+  post '/check', :to => 'courses#check'
+  post '/uncheck', :to => 'courses#uncheck'
 end
 
  resources :tracks, except: [:new, :create] do
