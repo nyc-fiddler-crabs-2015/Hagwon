@@ -47,11 +47,13 @@ ActiveRecord::Schema.define(version: 20150330144947) do
   end
 
   create_table "tracks", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.integer  "user_id",     null: false
-    t.integer  "category_id", null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "name",                    null: false
+    t.integer  "user_id",                 null: false
+    t.integer  "category_id",             null: false
+    t.integer  "popularity",  default: 1
+    t.integer  "parent_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "order"
   end
 
