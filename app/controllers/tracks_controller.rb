@@ -3,8 +3,7 @@ class TracksController < ApplicationController
   end
 
   def show
-    owner  = Track.find(params[:id]).owner.id
-    @count = Track.where(owner: owner).count
+    @count  = Track.find(params[:id]).users.count
     @track = Track.includes(:owner).find(params[:id])
   end
 
@@ -46,12 +45,8 @@ class TracksController < ApplicationController
     redirect_to track
   end
 
-  def fork
-    forked = Track.includes(:courses).find(params[:track_id])
-    track         = forked.dup
-    track.courses = forked.courses.dup
-    track.save
-    UserTrack.create(user_id: session[:user_id], track: track)
+  def follow
+    UserTrack.create(user_id: session[:user_id], track_id: params[:track_id])
     redirect_to tracks_path
   end
 
