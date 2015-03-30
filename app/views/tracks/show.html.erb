@@ -6,9 +6,10 @@
     <input type="text" ng-model="search" placeholder="Search course">
     <ul>
         <div ng-repeat="course in courses | filter:search" class="course-box">
-          <div class="course-box" style="background-color: {{course.color}};margin-bottom:10px;">
+          <div class="course-box" style="border: 5px solid {{course.color}};margin-bottom:10px;">
             <a href="{{course.url}}" target="_blank">{{course.name}}</a>
-            <span><%= link_to '/', '/courses/{{course.id}}/check'%></span>
+            <span><%= link_to '✓', '/courses/{{course.id}}/check', method: 'post' %></span>
+            <span><%= link_to 'X', '/courses/{{course.id}}/uncheck', method: 'post' %></span>
           </div>
         </div>
     </ul>
