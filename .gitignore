@@ -14,3 +14,6 @@ Guardfile
 /log/*
 !/log/.keep
 /tmp
+
+#secret Yaml
+/config/secrets.yml
