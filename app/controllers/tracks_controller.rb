@@ -1,4 +1,5 @@
 class TracksController < ApplicationController
+
   def index
   end
 
@@ -46,7 +47,7 @@ class TracksController < ApplicationController
     redirect_to track
   end
 
-  def follow
+  def fork
     if current_user.tracks.find_by(id: params[:track_id])== nil
       track = Track.includes(:courses).find(params[:track_id])
       new_track           = track.dup
@@ -59,6 +60,16 @@ class TracksController < ApplicationController
       redirect_to edit_track_path(new_track.id)
     else
       flash[:forked] = "You already forked this"
+      redirect_to :back
+    end
+  end
+
+  def follow
+    if current_user.tracks.find_by(id: params[:track_id]) == nil
+      track = UserTrack.create(user_id: session[:user_id], track_id: params[:track_id])
+      redirect_to track
+    else
+      flash[:forked] = "You already followed this Course"
       redirect_to :back
     end
   end
