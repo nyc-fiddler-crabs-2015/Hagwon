@@ -1,11 +1,13 @@
 <div ng-app="tracksApp">
-  <div ng-controller="tracksCtrl">
+  <div ng-controller="tracksCtrl" class="container">
     <h1> All Tracks </h1>
-    <%= link_to "New Track", categories_path, :class => "btn btn-default" %>
+    <%= link_to "Create a New Track", categories_path, :class => "btn btn-default" %>
     <input ng-model="search" placeholder="Search by name, category, user" style="width:20%">
-    <ul>
-      <li ng-repeat="track in tracks | filter:search">
-        <a href="/tracks/{{track.id}}"> {{track.name}}</a>
-      </li>
+
+    <p></p>
+    <div class="row">
+      <div ng-repeat="track in tracks | filter:search" class="col-xs-6 col-md-3 thumbnail"><a href="/tracks/{{track.id}}"> {{track.name}}</a><span class="pull-right">  <span class="badge">4 Users</span> <a href="/tracks/{{track.id}}/follow" rel="nofollow" data-method="post" class="btn btn-success">Join</a></span></div>      
+    </div>
+
   </div>
 </div>
