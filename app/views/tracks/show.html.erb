@@ -1,9 +1,19 @@
 <div ng-app="trackApp">
   <h1><%= @track.name%></h1>
-  <i> by <%=@track.owner.name%>, taken by <%=@count%> users </i>
+  <p><%= @track.description%> </p>
+  <% if @owner %>
+     <i> forked from <%=@owner.name%>, taken by <%=@count%> users </i>
+  <% else %>
+    <i> by <%=@track.owner.name%>, taken by <%=@count%> users </i>
+  <%end%>
 
-  <%= link_to 'Fork', "/tracks/#{@track.id}/fork", method: 'post'%>
-  <%= link_to 'Follow', "/tracks/#{@track.id}/follow", method: 'post'%>
+
+  <% if @track.user_id == session[:user_id] %>
+    <%= link_to 'Edit', edit_track_path%>
+  <%else%>
+    <%= link_to 'Fork', "/tracks/#{@track.id}/fork", method: 'post'%>
+    <%= link_to 'Follow', "/tracks/#{@track.id}/follow", method: 'post'%>
+  <%end%>
 
   <div ng-controller="coursesCtrl">
     <input type="text" ng-model="search" placeholder="Search course">

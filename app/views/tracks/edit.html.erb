@@ -8,7 +8,7 @@
       <%= check_box_tag("course[#{course.id}]", course.id)%>
       <%= label_tag("course[#{course.id}]", course.name)%>
     <%end%>
-    <%= hidden_field_tag(:position)%>
+    <%= hidden_field_tag(:order)%>
   <%= submit_tag %>
 <%end%>
 
@@ -16,20 +16,20 @@
 
   <div id="row_course_selection"  class="row">
   <% @checked_courses.each do |course| %>
-    
-    <%= render partial: "courses/course_grid", locals: {course: course} %>   
+
+    <%= render partial: "courses/course_grid", locals: {course: course} %>
 
 
   <% end %>
-   
+
   </div>
 
   <div id="sidebar_course_choices" class="sidebar">
    <% @all_courses.each do |course| %>
        <%= render partial: "courses/course_sidebar", locals: {course: course} %>
    <% end %>
-    
-   
+
+
   </div>
 
 </div>
