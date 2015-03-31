@@ -15,3 +15,9 @@
 .dropdown-menu a:hover {
   background: grey !important;
 }
+
+.logo {
+  width: 10em;
+  padding-top: .5em;   
+  padding-bottom: .5em;
+}
