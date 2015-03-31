@@ -20,14 +20,8 @@
 
   <div id="sidebar_course_choices" class="sidebar">
    <% @courses.each do |course| %>
-       <li data-id="<%= course.id %>" class="col-xs-12 col-md-12">
-        <div class="thumbnail course_box">
-          <div><%= course.name %></div>
-          <div><span>Rating</span> <%= star(course.rating) %></div>
-          <div><span>Difficulty</span> <%= rocket(course.difficulty) %> </div>
-        </div>
-      </li>
-   <% end %>
+  <%= render partial: "courses/course_sidebar", locals: {course: course} %>   
+  <% end %>
     
    
   </div>

@@ -17,13 +17,8 @@
   <div id="row_course_selection"  class="row">
   <% @checked_courses.each do |course| %>
     
-    <li data-id="<%= course.id %>" class="col-xs-6 col-md-3">
-        <div class="thumbnail course_box">
-          <div><%= course.name %></div>
-          <div><span>rating</span> <%= star(course.rating) %></div>
-          <div><span>difficulty</span> <%= rocket(course.difficulty) %></div>
-        </div>
-      </li>
+    <%= render partial: "courses/course_grid", locals: {course: course} %>   
+
 
   <% end %>
    
@@ -31,13 +26,7 @@
 
   <div id="sidebar_course_choices" class="sidebar">
    <% @all_courses.each do |course| %>
-       <li data-id="<%= course.id %>" class="col-xs-12 col-md-12">
-        <div class="thumbnail course_box">
-          <div><%= course.name %></div>
-          <div><span>rating</span> <%= star(course.rating) %></div>
-          <div><span>difficulty</span> <%= rocket(course.difficulty) %></div>
-        </div>
-      </li>
+       <%= render partial: "courses/course_sidebar", locals: {course: course} %>
    <% end %>
     
    
