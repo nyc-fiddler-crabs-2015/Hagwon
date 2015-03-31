@@ -6,10 +6,7 @@
 
 # User.first.tracks.create(user_id: 1, category_id: 1, name: 'yeee') will assign this track to an owner(User.first), and a user (means that the owner will be able to access it> adding a user_id will store the result in the join table, therefore making it accessible)
 
-
-
 require 'open-uri'
-
 require 'json'
 
 result = JSON.parse(open("https://api.coursera.org/api/catalog.v1/categories?includes=courses").read)['elements']
@@ -25,4 +22,33 @@ result.each do |category|
     end
   end
 end
+
+
+
+# doc = Nokogiri::HTML(open("https://www.codeschool.com/courses"))
+
+# hey = doc.css('.course-title').map{|x| x.children}
+
+# links = hey.map{|x| "http://codeschool.com#{x[1].attributes['href'].value}"}
+
+#yo = doc.css('article')
+#yo[0].css('img')[0].attributes['src']
+# h = doc.css('article').map{|x|
+
+require 'nokogiri'
+category = Category.find(7)
+doc = Nokogiri::HTML(open("https://www.codeschool.com/courses"))
+
+array_elements = doc.css('article').map{|x| x.children}
+
+array_elements.each do |el|
+  course = {photo_url: el.css('img')[0].attributes['src'].value,
+    url: "http://codeschool.com#{el[1].children[1].attributes['href'].value}",
+    name: el.children[3].children[3].children[1].children.last.text}
+  category.courses.create(course)
+  puts "SEEDED"
+end
+# x.css('img')[0].attributes['src'].value}
+# url = doc.css('article')[0].children[3].children[3].children[1].attributes['href'].value
+# h = doc.css('article')[0].children[3].children[3].children[1].children.last.text
 

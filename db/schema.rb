@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20150330144947) do
     t.string   "url",         null: false
     t.string   "name",        null: false
     t.integer  "category_id"
+    t.string   "photo_url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

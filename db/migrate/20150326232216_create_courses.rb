@@ -4,6 +4,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string :url, null: false
       t.string :name, null: false
       t.references :category
+      t.string :photo_url
 
       t.timestamps null: false
     end
