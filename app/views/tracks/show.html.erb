@@ -1,8 +1,10 @@
 <div ng-app="trackApp">
   <h1><%= @track.name%></h1>
   <i> by <%=@track.owner.name%>, taken by <%=@count%> users </i>
+
   <%= link_to 'Fork', "/tracks/#{@track.id}/fork", method: 'post'%>
   <%= link_to 'Follow', "/tracks/#{@track.id}/follow", method: 'post'%>
+
   <div ng-controller="coursesCtrl">
     <input type="text" ng-model="search" placeholder="Search course">
     <div class="row">

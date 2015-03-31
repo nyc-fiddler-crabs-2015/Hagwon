@@ -8,8 +8,11 @@
 
     <p></p>
     <div class="row">
-      <div ng-repeat="track in tracks | filter:search" class="col-xs-6 col-md-3 thumbnail"><a href="/tracks/{{track.id}}"> {{track.name}}</a><span class="pull-right">  <span class="badge">4 Users</span> <a href="/tracks/{{track.id}}/follow" rel="nofollow" data-method="post" class="btn btn-success">Join</a></span></div>      
+      <div ng-repeat="track in tracks | filter:search" class="col-xs-6 col-md-3 thumbnail">
+        <a href="/tracks/{{track.id}}"> {{track.name}}</a><span class="pull-right">
+        <span class="badge">4 Users</span>
+        <a href="/tracks/{{track.id}}/follow" rel="nofollow" data-method="post" class="btn btn-success">Join</a>
+      </div>
     </div>
-
   </div>
 </div>

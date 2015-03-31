@@ -1,12 +1,13 @@
 
 <%= form_tag category_tracks_path, :class => "track_drag" do %>
   <%= label_tag "test", "test" %>
-  <%= text_field_tag(:title)%>
+  <%= text_field_tag(:name)%>
+  <%= text_area_tag(:description)%>
     <% @courses.each do |course| %>
       <%= check_box_tag("course[#{course.id}]", course.id)%>
       <%= label_tag("course[#{course.id}]", course.name)%>
     <%end%>
-    <%= hidden_field_tag(:position)%>
+    <%= hidden_field_tag(:order)%>
   <%= submit_tag %>
 <%end%>
 
@@ -15,15 +16,15 @@
 
   <div id="row_course_selection"  class="row">
 
-   
+
   </div>
 
   <div id="sidebar_course_choices" class="sidebar">
    <% @courses.each do |course| %>
-  <%= render partial: "courses/course_sidebar", locals: {course: course} %>   
+  <%= render partial: "courses/course_sidebar", locals: {course: course} %>
   <% end %>
-    
-   
+
+
   </div>
 
 </div>

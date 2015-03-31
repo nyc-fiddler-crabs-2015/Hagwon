@@ -15,18 +15,20 @@ class TracksController < ApplicationController
 
   def new
     @category = Category.find(params[:category_id])
-    @courses  = @category.courses
+    @courses  = @category.courses.includes(:reviews)
   end
 
   def create
-    track_id = params[:track_id] || nil
-    track    = Track.create(user_id: session[:user_id], category_id: params[:category_id], name: params[:title], order: params[:position])
-    array_of_ids  = params[:course].map{|x,y| x.to_i}
+    user          = User.find(session[:user_id])
+    track         = user.tracks.new(track_params)
+    track.user_id = session[:user_id]
+    array_of_ids  = params[:order].split(",").to_a.map{|i| i.to_i}
     track.courses = Course.find(array_of_ids)
     track.save
     UserTrack.create(track: track, user_id: session[:user_id])
     redirect_to track
   end
+
 
   def edit
     user   = User.find(session[:user_id])
@@ -41,7 +43,7 @@ class TracksController < ApplicationController
   def update
     track = Track.find(params[:id])
     track.update_attributes(name: params[:title], order: params[:position])
-    courses = params[:course].map{|value, key| value.to_i }
+    courses       = params[:course].map{|value, key| value.to_i }
     track.courses = Course.find(courses)
     track.save
     redirect_to track
@@ -62,6 +64,13 @@ class TracksController < ApplicationController
       flash[:forked] = "You already forked this"
       redirect_to :back
     end
+
+  end
+
+
+  private
+  def track_params
+    params.permit(:category_id, :name, :order, :description)
   end
 
   def follow
