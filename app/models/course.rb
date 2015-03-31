@@ -5,6 +5,7 @@ class Course < ActiveRecord::Base
   has_many :user_courses
   has_many :users, through: :user_courses
   belongs_to :category
+  belongs_to :platform
 
   def rating
     ratings = Review.where(course_id: self.id).map { |rev| rev.rating  }
