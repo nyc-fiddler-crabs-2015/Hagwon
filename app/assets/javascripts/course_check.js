@@ -3,19 +3,26 @@ $(function() {
     $(this).removeClass("checked_on").addClass("checked_off");
       var course_id = $(this).data("id");
       console.log(course_id);
-    $.ajax({
-      url: '/courses/'+course_id+'/check',
-      type: 'post'
-    }).done(function( response ) {
+    toggle_check(course_id).done(function( response ) {
     console.log(response);
   });
 
   });
    $( ".check_function" ).on( "click", ".checked_off", function( event ) {
-    $(this).removeClass("checked_off").addClass("checked_on");
+          var course_id = $(this).data("id");
 
+    $(this).removeClass("checked_off").addClass("checked_on");
+    toggle_check(course_id);
   });
 
 
 });
 
+var toggle_check = function(id){
+  var course_id = id;
+  return $.ajax({
+      url: '/courses/'+course_id+'/check',
+      type: 'post'
+    })
+
+}
