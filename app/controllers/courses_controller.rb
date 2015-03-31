@@ -13,22 +13,15 @@ class CoursesController < ApplicationController
     render json: {courses: sort_courses(track).to_json(:include => :reviews), userCourses: course_ids}
   end
 
-
   def check
-    info = {user_id: session[:user_id], course_id: params[:course_id]}
-    if UserCourse.find_by(info) == nil
-      UserCourse.create(info)
-    end
-    redirect_to :back
-  end
-
-  def uncheck
     subscription = UserCourse.find_by(user_id: session[:user_id], course_id: params[:course_id])
     if subscription
       subscription.destroy
       subscription.save
+    else
+      UserCourse.create(user_id: sesssion[:user_id], course_id: params[:course_id])
     end
-    redirect_to :back
+    render json: 'I dont want to be redirected'
   end
 
   def destroy
