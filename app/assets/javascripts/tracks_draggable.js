@@ -5,7 +5,7 @@
             arraySelected.push($(this).data("id"));
         });
 
-      $('#position').val(arraySelected)
+      $('#order').val(arraySelected)
       $( "#sidebar_course_choices" ).sortable({
         connectWith: "#row_course_selection",
         update: function(){
@@ -33,7 +33,7 @@
             $(this).attr("class", "col-xs-6 col-md-3");
           });
           //* submit array to hidden input in form
-          $('#position').val(arraySelected)
+          $('#order').val(arraySelected)
           console.log(arraySelected)
 
         }
