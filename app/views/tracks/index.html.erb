@@ -1,6 +1,8 @@
 <div ng-app="tracksApp">
   <div ng-controller="tracksCtrl" class="container">
     <h1> All Tracks </h1>
+    <p class="text-center rocket"> <%= flash[:forked] if flash[:forked]%></p>
+      
     <%= link_to "Create a New Track", categories_path, :class => "btn btn-default" %>
     <input ng-model="search" placeholder="Search by name, category, user" style="width:20%">
 
