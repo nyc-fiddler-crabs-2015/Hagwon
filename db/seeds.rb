@@ -26,3 +26,33 @@ result.each do |category|
   end
 end
 
+
+
+# doc = Nokogiri::HTML(open("https://www.codeschool.com/courses"))
+
+# hey = doc.css('.course-title').map{|x| x.children}
+
+# links = hey.map{|x| "http://codeschool.com#{x[1].attributes['href'].value}"}
+
+#yo = doc.css('article')
+#yo[0].css('img')[0].attributes['src']
+# h = doc.css('article').map{|x|
+# x.css('img')[0].attributes['src'].value}
+# url = doc.css('article')[0].children[3].children[3].children[1].attributes['href'].value
+# h = doc.css('article')[0].children[3].children[3].children[1].children.last.text
+
+
+require 'open-uri'
+require 'nokogiri'
+category = Category.find(7)
+doc = Nokogiri::HTML(open("https://www.codeschool.com/courses"))
+
+array_elements = doc.css('article').map{|x| x.children}
+
+array_elements.each do |el|
+  course = {photo_url: el.css('img')[0].attributes['src'].value,
+    url: "http://codeschool.com#{el.children[3].children[3].children[1].attributes['href'].value}",
+    name: el.children[3].children[3].children[1].children.last.text}
+  category.courses.create(course)
+  puts "SEEDED"
+end
