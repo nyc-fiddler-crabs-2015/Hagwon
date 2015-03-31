@@ -1,4 +1,4 @@
-<div ng-app="trackApp">
+<div>
   <h1><%= @track.name%></h1>
   <p><%= @track.description%> </p>
   <% if @owner %>
@@ -15,15 +15,37 @@
     <%= link_to 'Follow', "/tracks/#{@track.id}/follow", method: 'post'%>
   <%end%>
 
-  <div ng-controller="coursesCtrl">
-    <input type="text" ng-model="search" placeholder="Search course">
-    <div class="row">
-        <div ng-repeat="course in courses | filter:search" class="col-xs-6 col-md-3">
-          <div class="course-box thumbnail">
-            <a href="{{course.url}}" target="_blank">{{course.name}}</a>
-            <span><%= link_to '✓', '/courses/{{course.id}}/check', method: 'post' %></span>
-            <span><%= link_to 'X', '/courses/{{course.id}}/uncheck', method: 'post' %></span>
+
+  <ul class="list-group container">
+    <div class="row">  <li class="list-group-item col-xs-6 col-md-3"><h1>Progress Stats</h1>
+      <span class="right-block">1</span> <span class="right-block">/ 14 Courses</span>
+
+    </li></div>
+  </ul>
+
+  <div class="row">
+    <% @track.courses.each do |course|%>
+    
+    <div class="col-xs-6 col-md-3">
+      <div class="course-box thumbnail">
+        <a href="<%=course.url%>" target="_blank"><%=course.name%></a>
+
+        <div class="check_function">
+        <% if course.users.find_by(id: current_user.id) %>
+          <div data-id="<%= course.id %>" draggable="false" class="checked_off center-block">
+            <i class="fa fa-check check"></i>
           </div>
+          <% else %>
+          <div data-id="<%= course.id %>" draggable="false" class="checked_on center-block">
+            <i class="fa fa-check check"></i>
+          </div>
+          <% end %>
+
         </div>
+
+      </div>
     </div>
+
+    <% end %>
   </div>
+</div>
