@@ -19,7 +19,7 @@ class CoursesController < ApplicationController
       subscription.destroy
       subscription.save
     else
-      UserCourse.create(user_id: sesssion[:user_id], course_id: params[:course_id])
+      UserCourse.create(user_id: session[:user_id], course_id: params[:course_id])
     end
     render json: 'I dont want to be redirected'
   end
