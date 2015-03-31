@@ -6,6 +6,7 @@ class TracksController < ApplicationController
   def show
     @count  = Track.find(params[:id]).popularity
     @track  = Track.includes(:owner).find(params[:id])
+    @owner = Track.find(@track.parent_id).owner if @track.parent_id
   end
 
   def json
@@ -42,8 +43,8 @@ class TracksController < ApplicationController
 
   def update
     track = Track.find(params[:id])
-    track.update_attributes(name: params[:title], order: params[:position])
-    courses       = params[:course].map{|value, key| value.to_i }
+    track.update_attributes(name: params[:title], order: params[:order])
+    courses       = params[:order].split(",").to_a.map{|value, key| value.to_i }
     track.courses = Course.find(courses)
     track.save
     redirect_to track
@@ -54,6 +55,7 @@ class TracksController < ApplicationController
       track = Track.includes(:courses).find(params[:track_id])
       new_track           = track.dup
       new_track.courses   = track.courses
+      new_track.owner = current_user
       new_track.parent_id = track.id
       new_track.save
       track.popularity   +=1
@@ -67,12 +69,6 @@ class TracksController < ApplicationController
 
   end
 
-
-  private
-  def track_params
-    params.permit(:category_id, :name, :order, :description)
-  end
-
   def follow
     if current_user.tracks.find_by(id: params[:track_id]) == nil
       track = UserTrack.create(user_id: session[:user_id], track_id: params[:track_id])
@@ -82,6 +78,12 @@ class TracksController < ApplicationController
       redirect_to :back
     end
   end
+
+  private
+  def track_params
+    params.permit(:category_id, :name, :order, :description)
+  end
+
 
 
 end
