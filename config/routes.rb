@@ -17,6 +17,7 @@ end
  resources :tracks, except: [:new, :create] do
    resources :courses, only: [:index, :destroy]
    post '/follow', :to => 'tracks#follow'
+   post '/fork', :to => 'tracks#fork'
  end
 
   get 'auth/:provider/callback', to: 'sessions#create'
