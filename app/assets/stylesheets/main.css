@@ -1,0 +1,17 @@
+.rocket {
+  color: red;
+}
+.star {
+  color: gold;
+}
+
+.dropdown-toggle:focus, .dropdown-toggle:hover {
+  background: #2c3e50 !important;
+}
+.dropdown-menu {
+  background: #2c3e50 !important;
+}
+
+.dropdown-menu a:hover {
+  background: grey !important;
+}
