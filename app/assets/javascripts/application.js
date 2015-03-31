@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
-//= require bootstrap-sprockets
+//= require jquery-ui/droppable
+//= require jquery-ui/selectable
+//= require jquery-ui/sortable
+//= require bootstrap.min
 //= require angular
 //= require_tree .
