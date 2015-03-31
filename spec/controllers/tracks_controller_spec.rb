@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe TracksController do
-  let!(:user){User.create(email: 'rayanbouts@gmail.com', username: 'rayanbouts', password: 'ilovejs')}
+  let!(:user){User.create(email: 'rayanbouts@gmail.com')}
   let!(:category){Category.create(name: 'Programming')}
   let!(:track){Track.create(name: 'Learn python in no time', owner: user, category: category)}
   let!(:course){Course.create(name: 'Vim', url: 'http://vim.com', category: category)}
