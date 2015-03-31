@@ -11,5 +11,10 @@ describe UsersController do
     end
   end
 
+  it "renders the index template" do
+    get :index
+    expect(response).to render_template("index")
+  end
+
 end
 
