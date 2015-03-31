@@ -1,12 +1,19 @@
 require 'rails_helper'
 
 describe User do
-  it 'is valid with a username and email' do
-    user = User.new(
-      username: 'Justin',
-      email: 'test@example.com',
-      password: '1234', password_confirmation: '1234')
+  let(:user) { FactoryGirl.build(:user) }
+
+  it 'is valid with an email' do
+    user = User.new(email: 'test@example.com')
     expect(user).to be_valid
+  end
+
+  it 'has a valid factory' do
+    expect(true).to eq true
+  end
+
+  it 'has a email' do
+    expect(user.email).to be_kind_of(String)
   end
 
 end

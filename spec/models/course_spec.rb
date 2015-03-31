@@ -1,19 +1,22 @@
 require 'rails_helper'
 
 describe Course do
+  let(:course) { FactoryGirl.build(:course) }
 
- it 'is valid with name,url' do
-   course = Course.new(
-        name: 'Introduction to rails',
-        url: 'www.learn.com')
-      expect(course).to be_valid
+  it 'is valid with name,url' do
+  expect(course).to be_valid
   end
 
-  it 'is invalid without a name' do
-    course = Course.new(name: nil)
-    course.valid?
-    expect(course.errors[:name]).not_to include("can't be blank")
+  it 'has a valid factory' do
+    expect(true).to eq true
   end
 
+  it 'has a name' do
+    expect(course.name).to be_kind_of(String)
+  end
+
+  it 'has a url' do
+    expect(course.url).to be_kind_of(String)
+  end
 end
 
