@@ -8,6 +8,7 @@ var Track = function(params, user, category){
   this.id = params.id;
   this.user = user;
   this.category = category;
+  this.popularity = params.popularity;
 }
 
 var Tracks = angular.module('tracksApp', [])

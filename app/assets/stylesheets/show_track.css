@@ -1,0 +1,10 @@
+
+#title{
+  width: 50%;
+  float:left;
+  height:20em;
+  background-color: rgb(212, 106, 106);
+}
+#title h1 {
+  border-bottom: white;
+}
