@@ -15,8 +15,8 @@ class TracksController < ApplicationController
   end
 
   def new
-    @category = Category.find(params[:category_id])
-    @courses  = @category.courses.includes(:reviews)
+    @category = Category.includes(:courses).find(params[:category_id])
+    @courses  = @category.courses
   end
 
   def create

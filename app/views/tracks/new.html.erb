@@ -20,11 +20,13 @@
   </div>
 
   <div id="sidebar_course_choices" class="sidebar">
-   <% @courses.each do |course| %>
-  <%= render partial: "courses/course_sidebar", locals: {course: course} %>
-  <% end %>
 
-
+    <% @courses.each do |course| %>
+       <%= render partial: "courses/course_sidebar", locals: {course: course} %>
+    <% end %>
   </div>
+</div>
+
+
 
 </div>
