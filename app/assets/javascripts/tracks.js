@@ -35,9 +35,10 @@ Tracks.controller('tracksCtrl', ['$scope', '$http', function($scope, $http){
     })
   })
 
-  $scope.updateTrack = function(){
-    var track = $scope.tracks.pop()
-    $http.post('/tracks/'+track.id)
+  $scope.sort='-popularity';
+
+  $scope.updateSort = function(by){
+    $scope.sort=by;
   }
 }])
 
@@ -48,10 +49,17 @@ Tracks.controller('newTrack', ['$scope', '$http', function($scope, $http){
     courses = JSON.parse(response.data.courses);
     category = response.data.category;
     courses.map(function(course){
-      $scope.courses.push(course)
+      $scope.courses.push(new Course(course))
     })
     console.log($scope.courses)
   })
+  $scope.titleName = {
+    message: '',
+    drag: 'Drag in here'
+  };
 
+  $scope.removeMessage = function(){
+    $scope.titleName.drag="";
+  }
 }])
 

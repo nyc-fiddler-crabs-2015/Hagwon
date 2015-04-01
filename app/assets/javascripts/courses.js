@@ -1,6 +1,7 @@
 var Course = function(params, color){
   this.id          = params.id;
   this.url         = params.url;
+  this.photo_url   = params.photo_url;
   this.name        = params.name;
   this.category_id = params.category_id;
   this.reviews = params.reviews;

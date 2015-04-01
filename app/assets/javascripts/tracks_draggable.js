@@ -2,23 +2,31 @@
       var arraySelected = [];
 
       $('#row_course_selection').children('li').each(function () {
-            arraySelected.push($(this).data("id"));
-        });
+        arraySelected.push($(this).data("id"));
+      });
 
       $('#order').val(arraySelected)
       $( "#sidebar_course_choices" ).sortable({
         connectWith: "#row_course_selection",
+        appendTo: 'body',
+        containment: 'window',
+        scroll: false,
+        helper: 'clone',
         update: function(){
           $("#sidebar_course_choices").children('li').each(function () {
             $(this).attr("class", "col-xs-12 col-md-12 ui-sortable-handle");
             var courseBox = '#course_' + $(this).data("id");
-          $(courseBox).prop('checked', false);
+            $(courseBox).prop('checked', false);
           });
 
         }
       });
       $( "#row_course_selection" ).sortable({
         connectWith: "#sidebar_course_choices",
+        appendTo: 'body',
+containment: 'window',
+scroll: false,
+helper: 'clone',
         update: function(event){
           arraySelected = [];
           $(event.target).children('li').each(function () {
