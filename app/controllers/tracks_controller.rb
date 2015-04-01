@@ -17,7 +17,7 @@ class TracksController < ApplicationController
 
   #method to handle this action
   def cat
-    Category.includes(:courses => :reviews).find(params[:category_id])
+    Category.includes(:courses => [:reviews, :platform]).find(params[:category_id])
   end
 
 
