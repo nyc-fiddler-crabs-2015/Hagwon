@@ -17,6 +17,7 @@
 //= require jquery-ui/selectable
 //= require jquery-ui/sortable
 //= require bootstrap.min
+//= require bootstrap/modal
 //= tracks_draggable
 //= courses
 //= tracks
