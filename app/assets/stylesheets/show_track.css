@@ -8,3 +8,9 @@
 #title h1 {
   border-bottom: white;
 }
+
+.track_prog{
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-bottom: 2em;
+}
