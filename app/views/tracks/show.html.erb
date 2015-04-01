@@ -25,7 +25,7 @@
 
   <div class="row">
     <% @track.courses.each do |course|%>
-
+    
     <div class="col-xs-6 col-md-3">
       <div class="course-box thumbnail">
         <a href="<%=course.url%>" target="_blank"><%=course.name%></a>
@@ -46,6 +46,10 @@
       </div>
     </div>
 
+
+  <%= render partial: "reviews/new", locals: {course: course, review: @review} %>
     <% end %>
   </div>
 </div>
+
+
