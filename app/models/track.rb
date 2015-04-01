@@ -6,4 +6,8 @@ class Track < ActiveRecord::Base
   has_many :courses, through: :course_tracks
   has_many :user_tracks
   has_many :users, through: :user_tracks
+
+  has_many :children, class_name: "Track",
+                          foreign_key: "parent_id"
+  belongs_to :parent, class_name: "Track"
 end

@@ -22,9 +22,13 @@ class User < ActiveRecord::Base
   end
 
   def progress(track_id)
-    hey   = Track.find(track_id).courses
-    taken = courses.select{|c| hey.include?(c)}
-    return taken.length ? (taken.length.to_f/hey.length.to_f)*100 : 0
+    hey   = Track.includes(:courses).find(track_id).courses
+    if courses.find_by(id: hey.map{|i| i.id})
+      taken = courses.select{|c| hey.include?(c)}
+      return taken.length ? (taken.length.to_f/hey.length.to_f)*100 : 0
+    else
+      0
+    end
   end
 
 end
