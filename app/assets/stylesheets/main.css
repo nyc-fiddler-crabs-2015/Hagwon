@@ -5,6 +5,10 @@
   color: gold;
 }
 
+body {
+  background: #eee !important;
+}
+
 .dropdown-toggle:focus, .dropdown-toggle:hover {
   background: #2c3e50 !important;
 }
@@ -57,10 +61,27 @@
 }
 
 .track_courses {
-   padding: 20px !important;
-   margin: 10px !important;
-   font-size: 21px !important;
-   font-weight: bold !important;
-   line-height: 1.3em !important;
-   font-weight: normal !important;
+ padding: 20px !important;
+ margin: 10px !important;
+ font-size: 21px !important;
+ font-weight: bold !important;
+ line-height: 1.3em !important;
+ font-weight: normal !important;
+}
+
+.remove-left-radius {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+
+}
+
+.remove-right-radius {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.track-right {
+  overflow: scroll;
+    height:40em;
+
 }
