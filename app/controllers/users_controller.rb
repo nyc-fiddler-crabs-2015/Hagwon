@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user = User.includes(:tracks => [:courses, :children, :users]).find(params[:id])
+		@user = User.includes(:tracks => [:courses, {:children => [:courses, :users, :children]}, :users, :category]).find(params[:id])
 	end
 
 	def edit
