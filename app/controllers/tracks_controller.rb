@@ -5,7 +5,7 @@ class TracksController < ApplicationController
 
   def json
     @tracks = Track.includes(:owner, :category).where(parent_id: nil)
-    render json: @tracks.to_json(:include => { :owner => { :only => :username }, category: {only: :name} })
+    render json: @tracks.to_json(:include => { :owner => { :only => [:name, :id] }, category: {only: :name} })
   end
 
   def show
