@@ -6,12 +6,25 @@
 }
 
 .navbar-default {
-  background-color: #dd4814 !important;
-  border-color: #bf3e11 !important;
+  margin: -2px;
+  background-color: #34495e !important;
+  height: 3em !important;
+  padding-top: 0.3em;
+  font-size: 1.5em;
 }
 
 .navbar a {
   color: #ecf0f1 !important;
+}
+
+.navbar-brand{
+  font-size: 1.2em !important;
+  margin-top: 0;
+}
+
+.navbar ul li {
+  margin-left: 5px;
+  border-left: 1px solid white;
 }
 
 .navbar a:hover {
