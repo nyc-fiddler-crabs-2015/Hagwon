@@ -1,5 +1,5 @@
 var User = function(params){
-  this.username= params.username;
+  this.username= params.name;
   this.id = params.id;
 }
 
@@ -8,6 +8,7 @@ var Track = function(params, user, category){
   this.id = params.id;
   this.user = user;
   this.category = category;
+  this.resume = params.description;
   this.popularity = params.popularity;
 }
 
@@ -45,13 +46,12 @@ Tracks.controller('tracksCtrl', ['$scope', '$http', function($scope, $http){
 Tracks.controller('newTrack', ['$scope', '$http', function($scope, $http){
   $scope.courses = [];
   $http.get(window.location.pathname+'.json').then(function(response){
-    console.log(response)
     courses = JSON.parse(response.data.courses);
     category = response.data.category;
     courses.map(function(course){
       $scope.courses.push(new Course(course))
     })
-    console.log($scope.courses)
+
   })
   $scope.titleName = {
     message: '',
