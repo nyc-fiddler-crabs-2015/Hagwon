@@ -27,3 +27,25 @@
   padding: 1em;
   width: 300px !important;
 }
+
+.track-left {
+  background: #34495e !important;
+  color: white !important;
+  height:40em;
+  border-radius: 5px;
+  padding-right: 2em;
+  
+}
+
+.container-fit {
+  width: 1140px !important;
+}
+
+.track_courses {
+   padding: 20px !important;
+   margin: 10px !important;
+   font-size: 21px !important;
+   font-weight: bold !important;
+   line-height: 1.3em !important;
+   font-weight: normal !important;
+}
