@@ -1,7 +1,8 @@
 <div class="container container-fit">
   <div class="row">
     <!-- Part 1 -->
-    <div class="col-xs-6 col-md-6 track-left remove-right-radius">
+    <div class="col-xs-6 col-md-6 track-left remove-right-radius" style="background-color: <%=@track.category.color%>">
+      <h3><%=@track.category.name%></h3>
       <h1><%= @track.name%></h1>
       <p><%= @track.description%> </p>
       <% if @owner %>
