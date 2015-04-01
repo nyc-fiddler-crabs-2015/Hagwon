@@ -1,25 +1,14 @@
-
-<%= form_tag category_tracks_path, :class => "track_drag" do %>
-  <%= label_tag "test", "test" %>
-  <%= text_field_tag(:name)%>
-  <%= text_area_tag(:description)%>
-    <% @courses.each do |course| %>
-      <%= check_box_tag("course[#{course.id}]", course.id)%>
-      <%= label_tag("course[#{course.id}]", course.name)%>
-    <%end%>
-    <%= hidden_field_tag(:order)%>
-  <%= submit_tag %>
-<%end%>
-
-
-<div class="container" ng-app="tracksApp">
-
+<div class="container" ng-app="tracksApp" ng-controller="newTrack">
+  <h1 ng-bind=""></h1>
+  <p>
   <div id="row_course_selection"  class="row">
 
   </div>
 
-  <div id="sidebar_course_choices" class="sidebar" ng-controller="newTrack">
-    <input ng-model="courseSearch" class="search_bar_courses">
+
+
+  <input ng-model="courseSearch" class= "form-control search_bar_courses" placeholder="Search for a course">
+  <div id="sidebar_course_choices" class="sidebar">
      <li ng-repeat="course in courses | filter:courseSearch" data-id="{{course.id}}" class="col-xs-12 col-md-12">
       <div class="thumbnail course_box">
         <div><img class="logo center-block" src="{{course.platform.logo_url}}" alt=""></div>
@@ -32,3 +21,17 @@
 </div>
 
 </div>
+
+<%= form_tag category_tracks_path, :class => "track_drag form-group" do %>
+  <%= label_tag "test", "test" %>
+  <%= text_field_tag(:name, '',placeholder: 'Title', :class=> 'form-control')%>
+  <%= text_area_tag(:description, '',placeholder: 'Description', :class=> 'form-control')%>
+    <% @courses.each do |course| %>
+      <%= check_box_tag("course[#{course.id}]", course.id)%>
+      <%= label_tag("course[#{course.id}]", course.name)%>
+    <%end%>
+    <%= hidden_field_tag(:order)%>
+  <%= submit_tag 'Create your Track', :class=> 'btn btn-success form-control' %>
+<%end%>
+
+
