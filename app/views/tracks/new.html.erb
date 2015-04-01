@@ -12,21 +12,23 @@
 <%end%>
 
 
-<div class="container">
+<div class="container" ng-app="tracksApp">
 
   <div id="row_course_selection"  class="row">
 
-
   </div>
 
-  <div id="sidebar_course_choices" class="sidebar">
-
-    <% @courses.each do |course| %>
-       <%= render partial: "courses/course_sidebar", locals: {course: course} %>
-    <% end %>
+  <div id="sidebar_course_choices" class="sidebar" ng-controller="newTrack">
+    <input ng-model="courseSearch" class="search_bar_courses">
+     <li ng-repeat="course in courses | filter:courseSearch" data-id="{{course.id}}" class="col-xs-12 col-md-12">
+      <div class="thumbnail course_box">
+        <div><img class="logo center-block" src="{{course.platform.logo_url}}" alt=""></div>
+        <div>{{course.name}}</div>
+    </li>
   </div>
+
+
+
 </div>
-
-
 
 </div>

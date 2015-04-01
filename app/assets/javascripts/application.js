@@ -10,11 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require angular
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/droppable
 //= require jquery-ui/selectable
 //= require jquery-ui/sortable
 //= require bootstrap.min
-//= require angular
+//= tracks_draggable
+//= courses
+//= tracks
 //= require_tree .

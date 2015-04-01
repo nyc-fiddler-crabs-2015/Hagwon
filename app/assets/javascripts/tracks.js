@@ -11,7 +11,14 @@ var Track = function(params, user, category){
   this.popularity = params.popularity;
 }
 
+
 var Tracks = angular.module('tracksApp', [])
+
+Tracks.run(['$http', function($http) {
+  $http.defaults.headers.common['Accept'] = 'application/json';
+  $http.defaults.headers.common['Content-Type'] = 'application/json';
+}]);
+
 
 Tracks.controller('tracksCtrl', ['$scope', '$http', function($scope, $http){
   $scope.tracks = [];
@@ -32,5 +39,19 @@ Tracks.controller('tracksCtrl', ['$scope', '$http', function($scope, $http){
     var track = $scope.tracks.pop()
     $http.post('/tracks/'+track.id)
   }
+}])
+
+Tracks.controller('newTrack', ['$scope', '$http', function($scope, $http){
+  $scope.courses = [];
+  $http.get(window.location.pathname+'.json').then(function(response){
+    console.log(response)
+    courses = JSON.parse(response.data.courses);
+    category = response.data.category;
+    courses.map(function(course){
+      $scope.courses.push(course)
+    })
+    console.log($scope.courses)
+  })
+
 }])
 

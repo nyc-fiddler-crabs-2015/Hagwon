@@ -5,6 +5,7 @@ Rails.application.routes.draw do
  resources :users
  resources :sessions, only: [:new, :create, :destroy]
  resources :categories, only: [:index, :show] do
+  get '/tracks/new.json', :to => 'tracks#new_json'
   resources :tracks, only: [:new, :create]
  end
 
