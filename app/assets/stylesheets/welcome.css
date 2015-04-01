@@ -17,3 +17,15 @@
 .navbar a:hover {
   text-shadow: 1px 1px black;
 }
+
+#footercontainer {
+    display: table;
+    width: 100%;
+}
+#footercontainer > div {
+    display: inline-block;
+    width: 20%;
+}
+#footercontainer > div:nth-child(2) {
+    width: 50%;
+}
