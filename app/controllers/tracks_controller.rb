@@ -12,6 +12,7 @@ class TracksController < ApplicationController
     @count  = Track.find(params[:id]).popularity
     @track  = Track.includes(:owner).find(params[:id])
     @owner = Track.find(@track.parent_id).owner if @track.parent_id
+    @review = Review.new
   end
 
 
