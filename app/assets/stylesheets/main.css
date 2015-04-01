@@ -18,7 +18,7 @@
 
 .logo {
   width: 10em;
-  padding-top: .5em;   
+  padding-top: .5em;
   padding-bottom: .5em;
 }
 
@@ -28,6 +28,21 @@
   width: 300px !important;
 }
 
+.select_cat{
+  margin-top: 3em;
+  height: 29.5em !important;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.row {
+  margin: 0px 0px 0px !important;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
 .track-left {
   background: #34495e !important;
   color: white !important;

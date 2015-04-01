@@ -1,14 +1,17 @@
 <h1> Select a Category for your Track </h1>
+<div class="select_cat">
 
-<div class="row"><% @categories.each do |category| %>
-  <div class="col-xs-12 col-md-12 thumbnail">
+  <div class="row drop">
+    <% @categories.each do |category| %>
+
+      <a href="/categories/<%=category.id%>/tracks/new">
+        <div class="col-xs-12 col-md-12 thumbnail btn btn-primary btn-block" style="background-color: <%=category.color%>;">
 
 
-  <h4 class="text-center"><%= link_to category.name,  new_category_track_path(category.id)%></h4>
+        <h4 class="text-center"><%=category.name%></h4>
+        </div>
+      </a>
 
-
+    <%end%>
   </div>
-
-<%end%>
 </div>
-
