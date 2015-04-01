@@ -35,9 +35,10 @@ Tracks.controller('tracksCtrl', ['$scope', '$http', function($scope, $http){
     })
   })
 
-  $scope.updateTrack = function(){
-    var track = $scope.tracks.pop()
-    $http.post('/tracks/'+track.id)
+  $scope.sort='-popularity';
+
+  $scope.updateSort = function(by){
+    $scope.sort=by;
   }
 }])
 
