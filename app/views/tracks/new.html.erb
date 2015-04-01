@@ -1,30 +1,32 @@
 <div class="container" ng-app="tracksApp" ng-controller="newTrack">
-  <h1 ng-bind=""></h1>
+
+  <h2 class="form_cat"><%=@category.name%>{{'  >   ' + titleName.message}}</h2>
   <p>
+
   <div id="row_course_selection"  class="row">
 
   </div>
 
 
-
-  <input ng-model="courseSearch" class= "form-control search_bar_courses" placeholder="Search for a course">
-  <div id="sidebar_course_choices" class="sidebar">
+  <div id="search_bar">
+    <input ng-model="courseSearch" class= "form-control search_bar_courses" placeholder="Search course/scroll">
+  </div>
+  <div id="sidebar_course_choices" class="sidebar" ng-mousedown="removeMessage()">
      <li ng-repeat="course in courses | filter:courseSearch" data-id="{{course.id}}" class="col-xs-12 col-md-12">
       <div class="thumbnail course_box">
-        <div><img class="logo center-block" src="{{course.platform.logo_url}}" alt=""></div>
+        <div class="course_in_form"><img class="logo center-block" src="{{course.platform.logo_url}}" alt=""></div>
         <div><a href="{{course.url}}" target="_blank">{{course.name}}</a></div>
+        <img class="icon_course" src="{{course.photo_url}}">
     </li>
   </div>
 
 
 
-</div>
 
-</div>
 
 <%= form_tag category_tracks_path, :class => "track_drag form-group" do %>
   <%= label_tag "test", "test" %>
-  <%= text_field_tag(:name, '',placeholder: 'Title', :class=> 'form-control')%>
+  <%= text_field_tag(:name, '',placeholder: 'Title', :class=> 'form-control', "ng-model" => "titleName.message")%>
   <%= text_area_tag(:description, '',placeholder: 'Description', :class=> 'form-control')%>
     <% @courses.each do |course| %>
       <%= check_box_tag("course[#{course.id}]", course.id)%>
@@ -35,3 +37,4 @@
 <%end%>
 
 
+</div>
