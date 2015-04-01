@@ -9,52 +9,6 @@ var Course = function(params, color){
   this.platform = params.platform;
 }
 
-Course.prototype.rating = function(){
-  if (this.reviews.length){
-    var ratings = this.reviews.map(function(rev){
-      return rev.rating
-    })
-    var average = ratings.reduce(function(previous, current){
-      return previous + current;
-    })
-    return average/ratings.length;
-  }else {
-    return 0;
-  }
-}
-
-Course.prototype.difficulty = function(){
-  if(this.reviews.length){
-    var difficulties = this.reviews.map(function(rev){
-      return rev.difficulty;
-    })
-    var average = difficulties.reduce(function(previous, current){
-    return previous + current;
-  })
-    return average/difficulties.length;
-  }else{
-    return 0;
-  }
-}
-
-// Course.prototype.viewRatings = function(){
-//   var html = '';
-//   for(var x=0; x<this.rating();x++){
-//     html+="<i class='fa fa-star star'></i>";
-//   }
-//   return html;
-// }
-
-// Course.prototype.viewDifficulty = function(){
-//   html = ""
-//   for(var x=0; x<this.difficulty();x++){
-//     html+="<i class='fa fa-star star'></i>"
-//   }
-//   return html;
-// }
-
-
-
 var Courses = angular.module('trackApp', [])
 
 Courses.controller('coursesCtrl', ['$scope', '$http', function($scope, $http){
