@@ -22,7 +22,7 @@ end
 
 codeschool = Platform.create(name: 'CodeSchool', logo_url: "http://kevinhamiltonsmith.com/wp-content/uploads/2013/05/code_school.png")
 
-category = Category.find(7)
+category = Category.find(15)
 require 'nokogiri'
 doc = Nokogiri::HTML(open("https://www.codeschool.com/courses"))
 
