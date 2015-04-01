@@ -1,55 +1,68 @@
-<div>
-  <h1><%= @track.name%></h1>
-  <p><%= @track.description%> </p>
-  <% if @owner %>
-     <i> forked from <%=link_to @owner.name, @owner%>, taken by <%=@count%> users </i>
-  <% else %>
-    <i> by <%=@track.owner.name%>, taken by <%=@count%> users </i>
-  <%end%>
-
-
-  <% if @track.user_id == session[:user_id] %>
-    <%= link_to 'Edit', edit_track_path%>
-  <%else%>
-    <%= link_to 'Fork', "/tracks/#{@track.id}/fork", method: 'post'%>
-    <%= link_to 'Follow', "/tracks/#{@track.id}/follow", method: 'post'%>
-  <%end%>
-
-
-  <ul class="list-group container">
-    <div class="row">  <li class="list-group-item col-xs-6 col-md-3"><h1>Progress Stats</h1>
-      <span class="right-block">1</span> <span class="right-block">/ 14 Courses</span>
-
-    </li></div>
-  </ul>
-
+<div class="container container-fit">
   <div class="row">
-    <% @track.courses.each do |course|%>
+    <!-- Part 1 -->
+    <div class="col-xs-6 col-md-6 track-left">
+      <h1><%= @track.name%></h1>
+      <p><%= @track.description%> </p>
+      <% if @owner %>
+      <i> forked from <%=link_to @owner.name, @owner%>, taken by <%=@count%> users </i>
 
-    <div class="col-xs-6 col-md-3">
-      <div class="course-box thumbnail">
-        <a href="<%=course.url%>" target="_blank"><%=course.name%></a>
+      <% else %>
+      <i> by <%=@track.owner.name%>, taken by <%=@count%> users </i>
+      <%end%>
 
-        <div class="check_function">
-        <% if course.users.find_by(id: current_user.id) %>
-          <div data-id="<%= course.id %>" draggable="false" class="checked_off center-block">
-            <i class="fa fa-check check"></i>
-          </div>
-          <% else %>
-          <div data-id="<%= course.id %>" draggable="false" class="checked_on center-block">
-            <i class="fa fa-check check"></i>
-          </div>
-          <% end %>
 
+      <% if current_user && @track.user_id == current_user.id %>
+      <%= link_to 'Edit', edit_track_path %>
+      <%else%>
+      <%= link_to 'Fork', "/tracks/#{@track.id}/fork", method: 'post'%>
+      <%= link_to 'Follow', "/tracks/#{@track.id}/follow", method: 'post'%>
+      <%end%>
+
+
+
+    </div>
+    <!-- Part 1 -->
+
+    <!-- Part 2 -->
+    <div class="col-xs-6 col-md-6">
+      <div class="row">
+        <div class="col-xs-12 col-md-12 thumbnail text-center">
+          <h1>Progress Stats</h1>
+          <span class="right-block">1</span> <span class="right-block">/ 14 Courses</span>
         </div>
 
+        <% @track.courses.each do |course|%>
+
+        <div class="col-xs-12 col-md-12">
+          <div class="row thumbnail track_courses">
+            <div class="check_function col-xs-3">
+              <% if current_user && course.users.find_by(id: current_user.id) %>
+              <div data-id="<%= course.id %>" draggable="false" class="checked_off center-block">
+                <i class="fa fa-check check"></i>
+              </div>
+              <% else %>
+              <div data-id="<%= course.id %>" draggable="false" class="checked_on center-block">
+                <i class="fa fa-check check"></i>
+              </div>
+              <% end %>
+
+            </div>
+            <div class="col-xs-9 course-box ">
+              <a href="<%=course.url%>" target="_blank"><%=course.name%></a>
+              <div>Rating: <%= star course.rating %></div>
+              <div>Difficulty: <%= rocket course.difficulty %></div>
+            </div>
+          </div>
+        </div>
+        <%= render partial: "reviews/new", locals: {course: course, review: @review} if current_user  %>
+
+        <% end %>
       </div>
     </div>
-
-
-  <%= render partial: "reviews/new", locals: {course: course, review: @review} %>
-    <% end %>
+    <!-- Part 2 -->
   </div>
+
 </div>
 
 
