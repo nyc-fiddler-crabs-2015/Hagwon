@@ -3,11 +3,10 @@ $(function() {
   $( ".check_function" ).on( "click", ".checked_on", function( event ) {
     $(this).removeClass("checked_on").addClass("checked_off");
     var course_id = $(this).data("id");
-    console.log(course_id);
           $('#modal'+ course_id +'').modal('toggle');
 
     toggle_check(course_id).done(function( response ) {
-      console.log("response");
+      console.log("worked");
     });
   });
 

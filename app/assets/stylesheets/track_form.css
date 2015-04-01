@@ -1,10 +1,10 @@
 .search_bar_courses{
   width: 12em !important;
-  margin-left: 5em !important;
+  margin-left: 2em !important;
 }
 
 .track_drag {
-  margin-top: 10em !important;
+  margin-top: 3em !important;
   width: 7em !important;
   margin-left: 11em;
 }
@@ -31,11 +31,6 @@
   margin-top: -5px;
 }
 
-#search_bar{
-  position:absolute;
-  margin-left: 50em !important;
-}
-
 #row_course_selection{
   margin-right: 1em !important;
   margin-bottom: 2em !important;
@@ -46,4 +41,10 @@
   position:center;
   margin:auto;
   margin-top: 2em;
+}
+
+
+.search_bar_courses{
+  position: absolute;
+  left: 73.7%;
 }

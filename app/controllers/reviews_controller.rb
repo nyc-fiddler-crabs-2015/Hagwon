@@ -1,10 +1,9 @@
 class ReviewsController < ActionController::Base
 
   def index
-    @course = Course.find(params[:course_id])
+    @course = Course.includes(:reviews).find(params[:course_id])
     @reviews = @course.reviews
     @review = Review.new
-
   end
 
   def show
@@ -16,7 +15,6 @@ class ReviewsController < ActionController::Base
   end
 
   def create
-    
     course = Course.find(params[:course_id])
     review = course.reviews.new(review_params)
     if review.save
@@ -24,7 +22,7 @@ class ReviewsController < ActionController::Base
     else
       redirect_to new_review_path
     end
-    
+
   end
 
   def new
@@ -42,5 +40,5 @@ class ReviewsController < ActionController::Base
   def review_params
     params.permit(:user_id, :difficulty, :rating)
   end
-  
+
 end

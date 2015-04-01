@@ -9,8 +9,8 @@
 
 
   <div id="search_bar">
-    <input ng-model="courseSearch" class= "form-control search_bar_courses" placeholder="Search course/scroll">
-  </div>
+  <input ng-model="courseSearch" class= "form-control search_bar_courses" placeholder="Search course/scroll">
+</div>
   <div id="sidebar_course_choices" class="sidebar" ng-mousedown="removeMessage()">
      <li ng-repeat="course in courses | filter:courseSearch" data-id="{{course.id}}" class="col-xs-12 col-md-12">
       <div class="thumbnail course_box">

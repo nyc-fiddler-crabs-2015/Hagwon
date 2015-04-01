@@ -9,8 +9,8 @@ class TracksController < ApplicationController
   end
 
   def show
-    @count  = Track.find(params[:id]).popularity
     @track  = Track.includes(:owner, :users).find(params[:id])
+    @count  = @track.popularity
     @owner = Track.find(@track.parent_id).owner if @track.parent_id
     @review = Review.new
   end
@@ -60,7 +60,7 @@ class TracksController < ApplicationController
 
   def update
     track = Track.find(params[:id])
-    track.update_attributes(name: params[:title], order: params[:order])
+    track.update_attributes(name: params[:title], description: params[:description], order: params[:order])
     courses       = params[:order].split(",").to_a.map{|value, key| value.to_i }
     track.courses = Course.find(courses)
     track.save
@@ -89,7 +89,7 @@ class TracksController < ApplicationController
   def follow
     if current_user.tracks.find_by(id: params[:track_id]) == nil
       track = UserTrack.create(user_id: session[:user_id], track_id: params[:track_id])
-      redirect_to track
+      redirect_to current_user
     else
       flash[:forked] = "You already followed this Course"
       redirect_to :back
