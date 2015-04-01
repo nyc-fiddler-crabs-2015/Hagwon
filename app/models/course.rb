@@ -7,13 +7,17 @@ class Course < ActiveRecord::Base
   belongs_to :category
   belongs_to :platform
 
+  def self.convert_from_json(id)
+    includes(:reviews).find(id)
+  end
+
   def rating
-    ratings = Review.where(course_id: self.id).map { |rev| rev.rating  }
+    ratings = reviews.map { |rev| rev.rating  }
     average = ratings.reduce(:+).to_f / ratings.size
   end
 
   def difficulty
-    difficulties = Review.where(course_id: self.id).map { |rev| rev.difficulty  }
+    difficulties = reviews.map { |rev| rev.difficulty  }
     average = difficulties.reduce(:+).to_f / difficulties.size
   end
 

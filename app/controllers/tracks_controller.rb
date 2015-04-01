@@ -3,21 +3,33 @@ class TracksController < ApplicationController
   def index
   end
 
+  def json
+    @tracks = Track.includes(:owner, :category).where(parent_id: nil)
+    render json: @tracks.to_json(:include => { :owner => { :only => :username }, category: {only: :name} })
+  end
+
   def show
     @count  = Track.find(params[:id]).popularity
     @track  = Track.includes(:owner).find(params[:id])
     @owner = Track.find(@track.parent_id).owner if @track.parent_id
   end
 
-  def json
-    @tracks = Track.includes(:owner, :category).where(parent_id: nil)
-    render json: @tracks.to_json(:include => { :owner => { :only => :username }, category: {only: :name} })
+
+  #method to handle this action
+  def cat
+    Category.includes(:courses => [:reviews, :platform]).find(params[:category_id])
   end
 
+
   def new
-    @category = Category.find(params[:category_id])
-    @courses  = @category.courses.includes(:reviews)
+    @category = cat
+    @courses  = cat.courses.includes(:reviews, :platform).all
   end
+
+  def new_json
+    render json: {category: cat, courses: cat.courses.to_json(:include => [:reviews, :platform])}
+  end
+
 
   def create
     user          = User.find(session[:user_id])
@@ -35,10 +47,15 @@ class TracksController < ApplicationController
     user   = User.find(session[:user_id])
     @track = Track.includes(:courses, :category => :courses).find(params[:id])
     @checked_courses = @track.courses
-    @all_courses     = @track.category.courses - @checked_courses
+    hey = @checked_courses.map{|x| x.id}
+    @all_courses     = @track.category.courses.where.not(id: hey) - @checked_courses
     unless user.tracks.include?(@track)
       redirect_to @track
     end
+  end
+
+  def edit_json
+    render json: {courses: @all_courses, checked: @checked_courses}
   end
 
   def update
