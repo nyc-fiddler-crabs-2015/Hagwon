@@ -7,10 +7,12 @@
 }
 
 body {
-  background: linear-gradient(135deg, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-background-repeat: no-repeat !important;
-background-size: cover !important;
+  background: linear-gradient(to right, #ffffff 0%,#f1f1f1 38%,#f6f6f6 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=1 );
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 900px;
+
 
 }
 
