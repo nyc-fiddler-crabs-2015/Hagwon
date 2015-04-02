@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.1.2'
 
 #google auth
 gem "omniauth-google-oauth2", "~> 0.2.1"
@@ -32,6 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Makes record duplication nice and easy
 gem 'amoeba'
+gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
