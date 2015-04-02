@@ -31,4 +31,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def completed(track_id)
+    all = Track.includes(:courses).find(track_id).courses
+    if courses.find_by(id: all.map{|i| i.id})
+      taken = courses.select{|c| all.include?(c)}
+      return taken.length
+    else
+      0
+    end
+  end
+
 end
