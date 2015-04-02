@@ -21,12 +21,20 @@
 
 #search_tools button,
 #search_tools a{
-  background-color:#1abc9c !important;
   border: 1px white !important;
   width: 10em !important;
   font-size: 1.5em !important;
   height: 3em !important;
 }
+
+#search_tools a{
+  background-color:#bc1A4B !important;
+}
+
+#search_tools button{
+  background-color:#1abc9c !important;
+}
+
 #search_tools input{
   border-radius: 10px !important;
 }
@@ -34,11 +42,13 @@
   padding-top: 0.8em;
 }
 
-#search_tools button:hover,
- #search_tools a:hover{
+#search_tools button:hover{
   background-color: #16a085 !important;
 }
 
+#search_tools a:hover{
+  background-color: #9b2a4c !important;
+}
 .description{
   opacity: 0.8;
   font-size: 0.6em;
@@ -83,4 +93,5 @@
   background: linear-gradient(135deg,  rgba(229,229,229,1) 11%,rgba(255,255,255,1) 100%) !important;
  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#ffffff',GradientType=1 );
  border:1px solid lightgrey !important;
+ margin-bottom: 2em;
 }
