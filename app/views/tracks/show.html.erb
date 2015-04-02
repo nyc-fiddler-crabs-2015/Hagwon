@@ -17,11 +17,11 @@
   </br>
 
   <% if current_user && @track.user_id == current_user.id %>
-  <%= link_to ("fa fa-pencil-square-o'></i> Edit").html_safe, edit_track_path, :class => "btn btn-default" %>
+  <%= link_to ("<i class='fa fa-pencil-square-o'></i> Edit").html_safe, edit_track_path, :class => "btn btn-default" %>
   <%else%>
   <%= link_to ("<i class='fa fa-code-fork'></i> Fork").html_safe, "/tracks/#{@track.id}/fork", method: 'post', :class => "btn btn-default" %>
 
-  <%= link_to ("<i class='fa fa-plus-square-o'></i> Follow").html_safe, "/tracks/#{@track.id}/follow", method: 'post', :class => "btn btn-default" %>
+  <%= link_to ("<i class='fa fa-users'></i> Follow").html_safe, "/tracks/#{@track.id}/follow", method: 'post', :class => "btn btn-default" %>
   <%end%>
 
 
