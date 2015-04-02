@@ -9,7 +9,7 @@ class TracksController < ApplicationController
   end
 
   def show
-    @track  = Track.includes(:owner, :users).find(params[:id])
+    @track  = Track.includes(:owner, :users, :courses => :platform).find(params[:id])
     @count  = @track.popularity
     @owner = Track.find(@track.parent_id).owner if @track.parent_id
     @review = Review.new
