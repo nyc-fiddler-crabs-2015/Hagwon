@@ -1,9 +1,9 @@
 
 .rocket {
-  color: red;
+  color: #e74c3c;
 }
 .star {
-  color: gold;
+  color: #f1c40f;
 }
 
 body {
@@ -93,4 +93,8 @@ background-size: cover !important;
 
 #search_tools a {
   background-color: red !important;
+}
+
+.course-box{
+  margin-bottom: 0.2em;
 }

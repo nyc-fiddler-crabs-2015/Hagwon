@@ -82,6 +82,7 @@
 
 .row a {
   color: #16a085;
+  text-decoration: none !important;
 }
 
 

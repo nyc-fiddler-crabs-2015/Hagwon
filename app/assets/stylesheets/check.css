@@ -8,7 +8,7 @@
 
   background-image: -webkit-gradient(
     linear, left top, left bottom, from(rgba(50,50,50,0.8)),
-    to(rgba(80,80,80,0.2)), color-stop(.5,#333333)
+    to(rgba(80,80,80,0.2)), color-stop(1,#333333)
     );
 
   background-image: -moz-linear-gradient(
@@ -60,7 +60,7 @@
 
   background-image: -webkit-gradient(
     linear, left top, left bottom, from(#2ecc71),
-    to(#27ae60), color-stop(.5,#333333)
+    to(#10ae60), color-stop(1,#333333)
     );
 
   background-image: -moz-linear-gradient(
