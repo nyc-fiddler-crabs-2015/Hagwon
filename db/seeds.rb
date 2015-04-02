@@ -37,3 +37,27 @@ array_elements.each do |el|
 end
 
 
+
+
+codecademy = Platform.create(name: 'Codecademy', logo_url: "http://cdn-production.codecademy.com/assets/logo/logo--dark-blue-bf11002ce1caecdfb9fec8d3286b8a8d.svg")
+codecademydoc = Nokogiri::HTML(open("http://www.codecademy.com/learn"))
+
+ category = Category.find(15)
+ articles = codecademydoc.css('article').map{|x| x.children}
+ articles.shift(2)
+ articles = articles[0..2]
+
+ articles.each do |article|
+  begin
+    course={
+      url: "www.codecademy.com/#{article[5].attributes['href'].value}",
+      name: article.children[4].children.text.gsub("\n", "").gsub("  ", ""),
+      photo_url: article[1].children[1].children[1].attributes['src'].value,
+      platform_id: codecademy.id}
+      category.courses.create(course)
+  rescue OpenURI::HTTPError => ex
+    next
+  end
+end
+
+

@@ -90,3 +90,7 @@ background-size: cover !important;
 
 }
 
+
+#search_tools a {
+  background-color: red !important;
+}
