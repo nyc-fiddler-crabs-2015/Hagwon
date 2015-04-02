@@ -50,7 +50,7 @@ codecademydoc = Nokogiri::HTML(open("http://www.codecademy.com/learn"))
  articles.each do |article|
   begin
     course={
-      url: "www.codecademy.com/#{article[5].attributes['href'].value}",
+      url: "http://www.codecademy.com/#{article[5].attributes['href'].value}",
       name: article.children[4].children.text.gsub("\n", "").gsub("  ", ""),
       photo_url: article[1].children[1].children[1].attributes['src'].value,
       platform_id: codecademy.id}
