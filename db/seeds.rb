@@ -11,7 +11,7 @@ result.each do |category|
   category['links']['courses'].each do |course_id|
     begin
       course = JSON.parse(open("https://api.coursera.org/api/catalog.v1/courses/#{course_id}").read)['elements'][0]
-      Course.create(name: course['name'], url: "https://www.coursera.org/course/#{course['shortName']}", category_id: cat.id, platform_id: coursera.id)
+      Course.create(name: course['name'], url: "https://www.coursera.org/course/#{course['shortName']}", category_id: cat.id, platform_id: coursera.id, photo_url: "http://designmodo.github.io/Flat-UI/img/icons/svg/book.svg")
     rescue OpenURI::HTTPError => ex
       next
     end
