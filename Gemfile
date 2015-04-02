@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
+
 
 #google auth
 gem "omniauth-google-oauth2", "~> 0.2.1"
