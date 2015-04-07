@@ -50,7 +50,7 @@ Tracks.controller('coursesCtrl', ['$scope', '$http', function($scope, $http){
       var users = course.users.map(function(u){return u.id})
       if(_.intersection(users, userCourses).length){
         var newCourse = new Course(course, 'checked_off')
-        newCourse.ratingsView = newCourse.difficulty();
+        newCourse.ratingsView = newCourse.difficulty() + '<br>' + newCourse.rating();
         $scope.courses.push(newCourse)
       }
       else{
@@ -69,14 +69,14 @@ Tracks.controller('newTrack', ['$scope', '$http', function($scope, $http){
     courses = JSON.parse(response.data.courses);
     category = response.data.category;
     courses.map(function(course){
-      $scope.courses.push(new Course(course))
+      newCourse = new Course(course)
+      newCourse.ratingsView = newCourse.difficulty() + '<br>' + newCourse.rating();
+      $scope.courses.push(newCourse)
     })
   })
 
   $scope.addCheck = function(course){
-    console.log(course)
     course.dragged=true;
-    console.log(course)
   }
 
 
