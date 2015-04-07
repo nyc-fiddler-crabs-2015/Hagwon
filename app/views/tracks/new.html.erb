@@ -16,7 +16,7 @@
     </div>
 
     <div id="sidebar_course_choices" class="sidebar" ng-mousedown="removeMessage()">
-       <li ng-repeat="course in courses | filter:courseSearch" data-id="{{course.id}}" class="col-xs-12 col-md-12" ng-click="unbind(course)">
+       <li ng-repeat="course in courses" data-id="{{course.id}}" class="col-xs-12 col-md-12" ng-show="course.name.toLowerCase().search(courseSearch)>-1 || course.platform.name.toLowerCase().search(courseSearch)>-1 || course.dragged==true" ng-mousedown="addCheck(course)">
           <div class="thumbnail course_box">
           <div class="course_in_form"><img class="logo center-block" src="{{course.platform.logo_url}}" alt=""></div>
           <div><a href="{{course.url}}" target="_blank">{{course.name}}</a></div>
