@@ -9,7 +9,7 @@ class TracksController < ApplicationController
   end
 
   def show
-    @track  = Track.includes(:owner, :users, :courses => :platform).find(params[:id])
+    @track  = Track.includes(:owner, :parent).find(params[:id])
     @count  = @track.popularity
     @owner = Track.find(@track.parent_id).owner if @track.parent_id
     @review = Review.new
@@ -88,7 +88,10 @@ class TracksController < ApplicationController
 
   def follow
     if current_user.tracks.find_by(id: params[:track_id]) == nil
-      track = UserTrack.create(user_id: session[:user_id], track_id: params[:track_id])
+      track=Track.find(params[:track_id])
+      UserTrack.create(user_id: session[:user_id], track_id: track.id)
+      track.popularity+=1
+      track.save
       redirect_to current_user
     else
       flash[:forked] = "You already followed this Course"
