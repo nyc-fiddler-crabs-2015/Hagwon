@@ -23,5 +23,5 @@
 //= tracks
 //= course_model
 //= track_model
-//= tracks_controller
+//= tracks_controllers
 //= require_tree .
