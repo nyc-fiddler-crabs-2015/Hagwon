@@ -1,5 +1,5 @@
 // index tracks page
-Tracks.controller('tracksCtrl', ['$scope', '$http', function($scope, $http){
+Tracks.controller('tracksCtrl', ['$scope', '$http','$sce',function($scope, $http, $sce){
   $scope.tracks = [];
   $http.get('/tracks.json').then(function(response){
     response.data.map(function(track){

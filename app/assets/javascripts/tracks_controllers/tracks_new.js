@@ -1,5 +1,6 @@
 // New track form page
-Tracks.controller('newTrack', ['$scope', '$http', function($scope, $http){
+
+Tracks.controller('newTrack', ['$scope','$http','$sce', function($scope, $http, $sce){
   $scope.courses = [];
   $http.get(window.location.pathname+'.json').then(function(response){
     courses = JSON.parse(response.data.courses);

@@ -1,5 +1,5 @@
 // track show page
-Tracks.controller('coursesCtrl', ['$scope', '$http', function($scope, $http){
+Tracks.controller('coursesCtrl', ['$scope','$http','$sce', function($scope, $http, $sce){
   $scope.courses = [];
   $http.get(window.location.pathname+'/courses').then(function(response){
     var courses = JSON.parse(response.data.courses);
