@@ -12,8 +12,11 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li><%= link_to "Browse Tracks", tracks_path %></li>
-				<li><%= link_to "Create a Track", categories_path %></li>
-				<li><%= link_to "My Progress", user_path(current_user.id) if current_user%></li>
+        <% if current_user%>
+
+				  <li><%= link_to "Create a Track", categories_path %></li>
+				  <li><%= link_to "My Progress", user_path(current_user.id)%></li>
+				<%end%>
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
