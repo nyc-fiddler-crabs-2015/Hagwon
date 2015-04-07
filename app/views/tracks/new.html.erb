@@ -1,6 +1,6 @@
 <div class="container" ng-app="tracksApp">
 
-  <h2 class="form_cat"><%=@category.name%>{{'>' + titleName.message}}</h2>
+  <h2 class="form_cat"><%=@category.name%> {{'>' + titleName.message}}</h2>
   <p>
 
   <div id="row_course_selection"  class="row">
@@ -19,8 +19,11 @@
        <li ng-repeat="course in courses" data-id="{{course.id}}" class="col-xs-12 col-md-12" ng-show="course.name.toLowerCase().search(courseSearch)>-1 || course.platform.name.toLowerCase().search(courseSearch)>-1 || course.dragged==true" ng-mousedown="addCheck(course)">
           <div class="thumbnail course_box">
           <div class="course_in_form"><img class="logo center-block" src="{{course.platform.logo_url}}" alt=""></div>
-          <div><a href="{{course.url}}" target="_blank">{{course.name}}</a></div>
+          <div class="course_title"><a href="{{course.url}}" target="_blank">{{course.name}}</a></div>
+
+          <div class="ratings" ng-bind-html="course.ratingsView | unsafe"></div>
           <img class="icon_course" src="{{course.photo_url}}">
+
       </li>
     </div>
 
