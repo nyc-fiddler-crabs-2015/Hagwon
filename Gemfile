@@ -20,6 +20,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'underscore-rails'
 gem 'angularjs-rails'
 gem 'jquery-ui-rails'
 gem "font-awesome-rails"

@@ -20,6 +20,13 @@ Tracks.run(['$http', function($http) {
   $http.defaults.headers.common['Content-Type'] = 'application/json';
 }]);
 
+Tracks.filter('unsafe', function($sce) {
+    return function(val) {
+        return $sce.trustAsHtml(val);
+    };
+});
+
+
 
 Tracks.controller('tracksCtrl', ['$scope', '$http', function($scope, $http){
   $scope.tracks = [];
@@ -41,6 +48,26 @@ Tracks.controller('tracksCtrl', ['$scope', '$http', function($scope, $http){
   $scope.updateSort = function(by){
     $scope.sort=by;
   }
+}])
+
+Tracks.controller('coursesCtrl', ['$scope', '$http', function($scope, $http){
+  $scope.courses = [];
+  $http.get(window.location.pathname+'/courses').then(function(response){
+    var courses = JSON.parse(response.data.courses);
+    var userCourses = response.data.userCourses;
+    courses.map(function(course){
+      var users = course.users.map(function(u){return u.id})
+      if(_.intersection(users, userCourses).length){
+        var newCourse = new Course(course, 'checked_off')
+        newCourse.ratingsView = newCourse.difficulty();
+        $scope.courses.push(newCourse)
+      }
+      else{
+        $scope.courses.push(new Course(course, 'checked_on'))
+      }
+
+    })
+  })
 }])
 
 Tracks.controller('newTrack', ['$scope', '$http', function($scope, $http){

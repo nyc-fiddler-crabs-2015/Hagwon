@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require angular
+//= require underscore
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/droppable

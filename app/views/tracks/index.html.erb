@@ -11,7 +11,9 @@
     <p></p>
 
     <div id="search_tools">
-      <%= link_to "Create a New Track", categories_path, :class => "btn btn-primary create_btn" %>
+      <% if current_user %>
+        <%= link_to "Create a New Track", categories_path, :class => "btn btn-primary create_btn" %>
+      <% end%>
       <button class="btn btn-primary sort_btn" ng-click="updateSort('-creation')"> Most Recent </button>
       <button class="btn btn-primary sort_btn" ng-click="updateSort('-popularity')"> Most popular </button>
       <input ng-model="search" class="search form-control" placeholder="Search by name, category, user" style="width:20%">
