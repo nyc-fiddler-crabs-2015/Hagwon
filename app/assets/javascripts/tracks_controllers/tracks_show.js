@@ -1,5 +1,5 @@
 // track show page
-Tracks.controller('coursesCtrl', ['$scope','$http','$sce', function($scope, $http, $sce){
+Tracks.controller('coursesCtrl', ['$scope','$http', '$sce', function($scope, $http, $sce){
   $scope.courses = [];
   $http.get(window.location.pathname+'/courses').then(function(response){
     var courses = JSON.parse(response.data.courses);
@@ -8,7 +8,7 @@ Tracks.controller('coursesCtrl', ['$scope','$http','$sce', function($scope, $htt
       var users = course.users.map(function(u){return u.id})
       if(_.intersection(users, userCourses).length){
         var newCourse = new Course(course, 'checked_off')
-        newCourse.ratingsView = newCourse.difficulty() + '<br>' + newCourse.rating();
+        newCourse.ratingsView = $sce.trustAsHtml(newCourse.difficulty() + '<br>' + newCourse.rating());
         $scope.courses.push(newCourse)
       }
       else{
