@@ -1,25 +1,14 @@
-var User = function(params){
-  this.username= params.name;
-  this.id = params.id;
-}
-
-var Track = function(params, user, category){
-  this.name = params.name;
-  this.id = params.id;
-  this.user = user;
-  this.category = category;
-  this.resume = params.description;
-  this.popularity = params.popularity;
-}
-
-
 var Tracks = angular.module('tracksApp', [])
 
+
+// Headers for rails
 Tracks.run(['$http', function($http) {
   $http.defaults.headers.common['Accept'] = 'application/json';
   $http.defaults.headers.common['Content-Type'] = 'application/json';
 }]);
 
+
+//Add a filter that leaves html safe
 Tracks.filter('unsafe', function($sce) {
     return function(val) {
         return $sce.trustAsHtml(val);
@@ -27,7 +16,7 @@ Tracks.filter('unsafe', function($sce) {
 });
 
 
-
+// index tracks page
 Tracks.controller('tracksCtrl', ['$scope', '$http', function($scope, $http){
   $scope.tracks = [];
   $http.get('/tracks.json').then(function(response){
@@ -50,6 +39,8 @@ Tracks.controller('tracksCtrl', ['$scope', '$http', function($scope, $http){
   }
 }])
 
+
+// track show page
 Tracks.controller('coursesCtrl', ['$scope', '$http', function($scope, $http){
   $scope.courses = [];
   $http.get(window.location.pathname+'/courses').then(function(response){
@@ -70,6 +61,8 @@ Tracks.controller('coursesCtrl', ['$scope', '$http', function($scope, $http){
   })
 }])
 
+
+// New track form page
 Tracks.controller('newTrack', ['$scope', '$http', function($scope, $http){
   $scope.courses = [];
   $http.get(window.location.pathname+'.json').then(function(response){
@@ -78,15 +71,14 @@ Tracks.controller('newTrack', ['$scope', '$http', function($scope, $http){
     courses.map(function(course){
       $scope.courses.push(new Course(course))
     })
-
   })
-  $scope.titleName = {
-    message: '',
-    drag: 'Drag in here'
-  };
 
-  $scope.removeMessage = function(){
-    $scope.titleName.drag="";
+  $scope.addCheck = function(course){
+    console.log(course)
+    course.dragged=true;
+    console.log(course)
   }
+
+
 }])
 

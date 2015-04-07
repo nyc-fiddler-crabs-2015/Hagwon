@@ -8,6 +8,7 @@ var Course = function(params, checked){
   this.reviews     = params.reviews;
   this.platform    = params.platform;
   this.checked     = checked;
+  this.dragged     = false;
 }
 
 
@@ -23,26 +24,4 @@ Course.prototype.difficulty = function(){
     return "<i class='fa fa-star star'></i>"
   }
 }
-
-
-
-var Courses = angular.module('trackApp', [])
-
-Courses.controller('coursesCtrl', ['$scope', '$http', function($scope, $http){
-  $scope.courses = [];
-  $http.get(window.location.pathname+'/courses').then(function(response){
-    var courses = JSON.parse(response.data.courses);
-    var takenCourses = response.data.userCourses;
-    courses.map(function(course){
-
-      if (takenCourses.indexOf(course.id) > -1){
-        newCourse = new Course(course)
-      } else {
-        newCourse = new Course(course)
-      }
-      $scope.courses.push(newCourse)
-    })
-  })
-
-}])
 

@@ -25,25 +25,22 @@
       $( "#row_course_selection" ).sortable({
         connectWith: "#sidebar_course_choices",
         appendTo: 'body',
-containment: 'window',
-scroll: false,
-helper: 'clone',
+        containment: 'window',
+        scroll: false,
+        helper: 'clone',
         update: function(event){
           arraySelected = [];
           $(event.target).children('li').each(function () {
             arraySelected.push($(this).data("id"));
             var courseBox = '#course_' + $(this).data("id");
-          // console.log(courseBox);
-          // courseBox.attr("checked", !courseBox.attr("checked"));
-          $(courseBox).prop('checked', true);
-        });
+            $(courseBox).prop('checked', true);
+          });
 
           $("#row_course_selection").children('li').each(function () {
             $(this).attr("class", "col-xs-6 col-md-3");
           });
-          //* submit array to hidden input in form
+
           $('#order').val(arraySelected)
-          console.log(arraySelected)
 
         }
       });
