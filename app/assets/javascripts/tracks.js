@@ -73,9 +73,12 @@ Tracks.controller('newTrack', ['$scope', '$http', function($scope, $http){
     })
   })
 
-  $scope.unbind = function(course){
-    ('data-ng-repeat')
+  $scope.addCheck = function(course){
+    console.log(course)
+    course.dragged=true;
+    console.log(course)
   }
+
 
 }])
 

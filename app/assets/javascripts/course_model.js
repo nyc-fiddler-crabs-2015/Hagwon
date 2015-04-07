@@ -8,6 +8,7 @@ var Course = function(params, checked){
   this.reviews     = params.reviews;
   this.platform    = params.platform;
   this.checked     = checked;
+  this.dragged     = false;
 }
 
 
