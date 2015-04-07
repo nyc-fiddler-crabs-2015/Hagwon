@@ -18,10 +18,12 @@ class CoursesController < ApplicationController
     if subscription
       subscription.destroy
       subscription.save
+      status = 'checked_off'
     else
       UserCourse.create(user_id: session[:user_id], course_id: params[:course_id])
+      status = 'checked_off'
     end
-    render json: 'I dont want to be redirected'
+    render json: status
   end
 
   def destroy

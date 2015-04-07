@@ -77,6 +77,16 @@ html{
 
 
 .icon_course{
-  z-index:1;
+  z-index:0;
+  width: 80%;
   bottom:2em;
+  margin-left: 3em !important;
+}
+
+.ratings {
+  position:absolute;
+  margin-bottom: 20px;
+  padding-bottom: 0;
+  z-index: 1000;
+  color: #2c3e50;
 }
