@@ -1,5 +1,6 @@
     $(function() {
       var arraySelected = [];
+      console.log(arraySelected)
 
       $('#row_course_selection').children('li').each(function () {
         arraySelected.push($(this).data("id"));
