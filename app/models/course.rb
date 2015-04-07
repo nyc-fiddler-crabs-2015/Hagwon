@@ -7,9 +7,6 @@ class Course < ActiveRecord::Base
   belongs_to :category
   belongs_to :platform
 
-  def self.convert_from_json(id)
-    includes(:reviews).find(id)
-  end
 
   def rating
     ratings = reviews.map { |rev| rev.rating  }
