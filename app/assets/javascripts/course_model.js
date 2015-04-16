@@ -17,7 +17,6 @@ Course.prototype.difficulty = function(){
     var rev = this.reviews.map(function(r){return r.difficulty})
     var total =  _.reduce(rev, function(sum, el) {return sum + el}, 0)
     var averageDiff = (total/rev.length);
-    console.log(averageDiff)
     return Array(Math.ceil(averageDiff)+1).join("<i class='fa fa-star star'></i>")
   }
   else{
@@ -30,7 +29,6 @@ Course.prototype.rating = function(){
     var rev = this.reviews.map(function(r){return r.rating})
     var total =  _.reduce(rev, function(sum, el) {return sum + el}, 0)
     var averageDiff = (total/rev.length);
-    console.log(averageDiff)
     return Array(Math.ceil(averageDiff)+1).join("<i class='fa fa-rocket rocket'></i>  ")
   }
   else{
