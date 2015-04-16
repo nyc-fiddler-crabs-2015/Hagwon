@@ -70,13 +70,9 @@ class TracksController < ApplicationController
   def fork
     if current_user.tracks.find_by(id: params[:track_id])== nil
       track = Track.includes(:courses).find(params[:track_id])
-      new_track           = track.dup
-      new_track.courses   = track.courses
-      new_track.owner = current_user
-      new_track.parent_id = track.id
-      new_track.save
-      track.popularity   +=1
+      track.popularity+=1
       track.save
+      new_track = track.fork
       UserTrack.create(user: current_user, track: new_track)
       redirect_to edit_track_path(new_track.id)
     else
@@ -88,10 +84,10 @@ class TracksController < ApplicationController
 
   def follow
     if current_user.tracks.find_by(id: params[:track_id]) == nil
-      track=Track.find(params[:track_id])
-      UserTrack.create(user_id: session[:user_id], track_id: track.id)
+      track = Track.find(params[:track_id])
       track.popularity+=1
       track.save
+      UserTrack.create(user_id: session[:user_id], track_id: track.id)
       redirect_to current_user
     else
       flash[:forked] = "You already followed this Course"
