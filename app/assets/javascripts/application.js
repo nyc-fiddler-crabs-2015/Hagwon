@@ -20,8 +20,10 @@
 //= require bootstrap.min
 //= require bootstrap/modal
 //= tracks_draggable
-//= tracks
 //= course_model
 //= track_model
-//= tracks_controllers
+//= tracks
+//= tracks_controllers/tracks_index
+//= tracks_controllers/tracks_new
+//= tracks_controllers/tracks_show
 //= require_tree .
