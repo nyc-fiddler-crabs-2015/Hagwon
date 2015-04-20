@@ -5,13 +5,15 @@ Tracks.controller('coursesCtrl', ['$scope','$http', '$sce', function($scope, $ht
     var courses = JSON.parse(response.data.courses);
     var userCourses = response.data.userCourses;
     courses.map(function(course){
-      var users = course.users.map(function(u){return u.id})
-      if(_.intersection(users, userCourses).length){
+      console.log(userCourses.indexOf(course.id) > -1)
+      if(userCourses.indexOf(course.id)>-1){
+        console.log("checked")
         var newCourse = new Course(course, 'checked_off')
         newCourse.ratingsView = $sce.trustAsHtml(newCourse.difficulty() + '<br>' + newCourse.rating());
         $scope.courses.push(newCourse)
       }
       else{
+        console.log("uncheck")
         $scope.courses.push(new Course(course, 'checked_on'))
       }
 
@@ -26,14 +28,14 @@ Tracks.controller('coursesCtrl', ['$scope','$http', '$sce', function($scope, $ht
   $scope.check = function(course){
 
     if(course.checked=="checked_on"){
-      course.checked = "checked_off"
+      course.checked = "checked_off";
       $('#modal'+ course.id +'').modal('toggle');
     }
     else{
-      course.checked="checked_on"
+      course.checked="checked_on";
     }
+
     $.post('/courses/'+course.id+'/check').then(function(response){
-      console.log("WORKED")
     }).fail(function(response){console.log('didnt work')})
 
   }
