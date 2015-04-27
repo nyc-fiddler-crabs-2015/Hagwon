@@ -19,6 +19,7 @@
   </div>
 
 </div>
+
 <%= form_tag track_path(@track.id), method: 'put', :class => "track_drag form-group edit_track" do %>
   <%= text_field_tag(:title , @track.name, :class=>'form-control')%>
   <%= text_area_tag(:description, @track.description,placeholder: 'Description', :class=> 'form-control')%>
