@@ -73,6 +73,7 @@ class TracksController < ApplicationController
       track.popularity+=1
       track.save
       new_track = track.fork
+      new_track.save
       UserTrack.create(user: current_user, track: new_track)
       redirect_to edit_track_path(new_track.id)
     else
