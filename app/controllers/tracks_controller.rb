@@ -45,7 +45,7 @@ class TracksController < ApplicationController
 
   def edit
     user   = User.find(session[:user_id])
-    @track = Track.includes(:courses, :category => :courses).find(params[:id])
+    @track = Track.includes(:courses => :platform, :category => :courses).find(params[:id])
     @checked_courses = @track.courses
     hey = @checked_courses.map{|x| x.id}
     @all_courses     = @track.category.courses.where.not(id: hey) - @checked_courses
@@ -70,9 +70,9 @@ class TracksController < ApplicationController
   def fork
     if current_user.tracks.find_by(id: params[:track_id])== nil
       track = Track.includes(:courses).find(params[:track_id])
+      new_track = track.fork
       track.popularity+=1
       track.save
-      new_track = track.fork
       new_track.save
       UserTrack.create(user: current_user, track: new_track)
       redirect_to edit_track_path(new_track.id)
