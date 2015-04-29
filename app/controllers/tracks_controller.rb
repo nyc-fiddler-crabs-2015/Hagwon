@@ -68,7 +68,8 @@ class TracksController < ApplicationController
   end
 
   def fork
-    if current_user.tracks.find_by(id: params[:track_id])== nil
+    current_user = User.find_by(id: session[:user_id])
+    if current_user && current_user.tracks.find_by(id: params[:track_id])== nil
       track = Track.includes(:courses).find(params[:track_id])
       new_track = track.fork
       track.popularity+=1

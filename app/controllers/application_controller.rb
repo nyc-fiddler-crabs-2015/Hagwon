@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_path
-      user_path(current_user.id)
+    user_path(current_user.id)
   end
 
 end
